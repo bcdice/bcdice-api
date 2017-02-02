@@ -34,7 +34,7 @@ BCDice::SYSTEMS.freeze
 require "bcdiceCore"
 
 class BCDice
-    def dice_command   # ダイスコマンドの分岐処理
+  def dice_command   # ダイスコマンドの分岐処理
     arg = @message.upcase
 
     debug('dice_command arg', arg)
@@ -67,6 +67,7 @@ class BCDice
     secret = nil
     return output, secret
   end
+end
 
 get "/v1/version" do
   json api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
