@@ -70,7 +70,7 @@ class BCDice
 end
 
 get "/" do
-  "Hello. This is DBDice-API."
+  "Hello. This is DCDice-API."
 end
 
 get "/v1/version" do
