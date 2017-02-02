@@ -69,6 +69,10 @@ class BCDice
   end
 end
 
+get "/" do
+  "Hello. This is DBDice-API."
+end
+
 get "/v1/version" do
   json api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
 end
