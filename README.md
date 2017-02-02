@@ -4,7 +4,7 @@ BCDiceを提供するAPIサーバー
 
 ## Demo
 
-https://bcdice.herokuapp.com/v1/version
+https://bcdice.herokuapp.com
 
 ## Setup
 
