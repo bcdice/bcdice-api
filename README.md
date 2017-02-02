@@ -19,25 +19,8 @@ $ bundle exec ruby server.rb
 
 ## API
 
-### version
-
-BCDiceとAPIサーバーのバージョンを取得
-
-GET `/v1/version`
-
-
-### systems
-
-対応しているダイスボットシステム名の一覧を取得
-
-GET `/v1/systems`
-
-### diceroll
-
-ダイスボットを指定してコマンドを実行する
-
-GET `/v1/diceroll`
-
-#### パラメータ
-* `system` : システム名
-* `command` : コマンド
+Method                           | Description
+-------------------------------- | ----- 
+[/v1/version](/api.md#version)   | BCDiceとAPIサーバーのバージョン
+[/v1/systems](/api.md#systems)   | ダイスボットのシステム名一覧
+[/v1/diceroll](/api.md#diceroll) | ダイスボットのコマンドを実行
