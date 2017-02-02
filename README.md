@@ -14,7 +14,7 @@ $ cd bcdice-api
 $ git submodule init
 $ git submodule update
 $ bundle install
-$ bundle exec ruby server.rb
+$ bundle exec rackup
 ```
 
 ## API
