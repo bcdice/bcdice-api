@@ -52,5 +52,7 @@ Dir.glob("bcdice/src/diceBot/*.rb").each do |path|
   BCDice::SYSTEMS << dicebot.gameType
 end
 
+BCDice::SYSTEMS.sort!
+
 BCDice::DICEBOTS.freeze
 BCDice::SYSTEMS.freeze
