@@ -2,8 +2,8 @@
 require 'sinatra'
 require 'sinatra/json'
 
-$LOAD_PATH << __dir__
-$LOAD_PATH << __dir__+"/bcdice/src/"
+$:.unshift __dir__
+$:.unshift File.join(__dir__, "bcdice", "src")
 
 module BCDiceAPI
   VERSION = "0.0.0"
