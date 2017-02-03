@@ -82,8 +82,13 @@ get "/v1/systems" do
 end
 
 get "/v1/diceroll" do
+  dicebot = BCDice::DICEBOTS[params[:system]]
+  if dicebot.nil? || params[:command].nil?
+    return json ok: false
+  end
+
   bcdice = BCDiceMaker.new.newBcDice
-  bcdice.setDiceBot(BCDice::DICEBOTS[params[:system]])
+  bcdice.setDiceBot(dicebot)
   bcdice.setMessage(params[:command])
 
   result, secret = bcdice.dice_command
