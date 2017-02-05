@@ -44,16 +44,18 @@ get "/v1/diceroll" do
 end
 
 get "/v1/OnsetCompat" do
-  result = ""
-
   if params[:list] == "1"
-    BCDice::SYSTEMS.sort.each do |game|
-      result += game + "\n"
+    return BCDice::SYSTEMS.join("\n")
+  end
+
+  if params[:text]
+    dicebot = BCDice::DICEBOTS[params[:sys]]
+    if dicebot.nil? || params[:text].nil?
+      return "error"
     end
-    result
-  elsif params[:text]
+    
     bcdice = BCDiceMaker.new.newBcDice
-    bcdice.setDiceBot(BCDice::DICEBOTS[params[:system]])
+    bcdice.setDiceBot(dicebot)
     bcdice.setMessage(params[:text])
     
     result, secret = bcdice.dice_command
@@ -63,7 +65,6 @@ get "/v1/OnsetCompat" do
       "onset" + result
     end
   else
-    "error"
+    return "error"
   end
 end
-
