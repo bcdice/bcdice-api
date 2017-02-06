@@ -13,7 +13,7 @@ end
 
 
 get "/" do
-  "Hello. This is DCDice-API."
+  "Hello. This is BCDice-API."
 end
 
 get "/v1/version" do
@@ -29,16 +29,42 @@ get "/v1/diceroll" do
   if dicebot.nil? || params[:command].nil?
     return json ok: false
   end
-
+  
   bcdice = BCDiceMaker.new.newBcDice
   bcdice.setDiceBot(dicebot)
   bcdice.setMessage(params[:command])
-
+  
   result, secret = bcdice.dice_command
-
+  
   if result.nil?
     json ok: false
   else
     json ok: true, result: result, secret: secret
+  end
+end
+
+get "/v1/onset" do
+  if params[:list] == "1"
+    return BCDice::SYSTEMS.join("\n")
+  end
+
+  if params[:text]
+    dicebot = BCDice::DICEBOTS[params[:sys]]
+    if dicebot.nil? || params[:text].nil?
+      return "error"
+    end
+    
+    bcdice = BCDiceMaker.new.newBcDice
+    bcdice.setDiceBot(dicebot)
+    bcdice.setMessage(params[:text])
+    
+    result, secret = bcdice.dice_command
+    if result.nil?
+      "error"
+    else
+      "onset" + result
+    end
+  else
+    return "error"
   end
 end
