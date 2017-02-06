@@ -12,6 +12,21 @@ module BCDiceAPI
 end
 
 
+helpers do
+  def diceroll(system, command)
+    dicebot = BCDice::DICEBOTS[system]
+    if dicebot.nil? || command.nil?
+      return nil, nil
+    end
+
+    bcdice = BCDiceMaker.new.newBcDice
+    bcdice.setDiceBot(dicebot)
+    bcdice.setMessage(command)
+
+    return bcdice.dice_command
+  end
+end
+
 get "/" do
   "Hello. This is BCDice-API."
 end
@@ -25,16 +40,7 @@ get "/v1/systems" do
 end
 
 get "/v1/diceroll" do
-  dicebot = BCDice::DICEBOTS[params[:system]]
-  if dicebot.nil? || params[:command].nil?
-    return json ok: false
-  end
-
-  bcdice = BCDiceMaker.new.newBcDice
-  bcdice.setDiceBot(dicebot)
-  bcdice.setMessage(params[:command])
-
-  result, secret = bcdice.dice_command
+  result, secret = diceroll(params[:system], params[:command])
 
   if result.nil?
     json ok: false
@@ -48,23 +54,11 @@ get "/v1/onset" do
     return BCDice::SYSTEMS.join("\n")
   end
 
-  if params[:text]
-    dicebot = BCDice::DICEBOTS[params[:sys]]
-    if dicebot.nil? || params[:text].nil?
-      return "error"
-    end
+  result, secret = diceroll(params[:sys], params[:text])
 
-    bcdice = BCDiceMaker.new.newBcDice
-    bcdice.setDiceBot(dicebot)
-    bcdice.setMessage(params[:text])
-
-    result, secret = bcdice.dice_command
-    if result.nil?
-      "error"
-    else
-      "onset" + result
-    end
+  if result.nil?
+    "error"
   else
-    return "error"
+    "onset" + result
   end
 end
