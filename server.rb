@@ -29,13 +29,13 @@ get "/v1/diceroll" do
   if dicebot.nil? || params[:command].nil?
     return json ok: false
   end
-  
+
   bcdice = BCDiceMaker.new.newBcDice
   bcdice.setDiceBot(dicebot)
   bcdice.setMessage(params[:command])
-  
+
   result, secret = bcdice.dice_command
-  
+
   if result.nil?
     json ok: false
   else
@@ -53,11 +53,11 @@ get "/v1/onset" do
     if dicebot.nil? || params[:text].nil?
       return "error"
     end
-    
+
     bcdice = BCDiceMaker.new.newBcDice
     bcdice.setDiceBot(dicebot)
     bcdice.setMessage(params[:text])
-    
+
     result, secret = bcdice.dice_command
     if result.nil?
       "error"
