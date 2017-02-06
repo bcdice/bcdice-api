@@ -80,7 +80,7 @@ WebAPIで利用できるダイスボットの一覧が返却されます。こ�
 
 ## onset
 
-Onset! Version 2.1.2に付属しているroll.rbと同じ挙動を返す互換API
+Onset! Version 2.1.2に付属しているroll.rbと同じ挙動を提供します。
 
 ### URL
 
