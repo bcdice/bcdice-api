@@ -54,7 +54,7 @@ get "/v1/onset" do
     return BCDice::SYSTEMS.join("\n")
   end
 
-  result, secret = diceroll(params[:sys], params[:text])
+  result, secret = diceroll(params[:sys] || "DiceBot", params[:text])
 
   if result.nil?
     "error"
