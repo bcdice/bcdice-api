@@ -78,7 +78,9 @@ WebAPIで利用できるダイスボットの一覧が返却されます。こ�
 
 `secret` はシックレットダイスロールであるかを示します。
 
-## Onset!のroll.rb互換コマンド
+## Onset!のroll.rb互換API
+
+Onset! Version 2.1.2に付属しているroll.rbと同じ挙動を返す互換API
 
 ### URL
 
