@@ -8,7 +8,7 @@ require 'sinatra/json'
 require 'bcdice_wrap'
 
 module BCDiceAPI
-  VERSION = "0.0.0"
+  VERSION = "0.1.0"
 end
 
 
