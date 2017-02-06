@@ -43,7 +43,7 @@ get "/v1/diceroll" do
   end
 end
 
-get "/v1/OnsetCompat" do
+get "/v1/onset" do
   if params[:list] == "1"
     return BCDice::SYSTEMS.join("\n")
   end

@@ -82,7 +82,7 @@ WebAPIで利用できるダイスボットの一覧が返却されます。こ�
 
 ### URL
 
-`/v1/OnsetCompat`
+`/v1/onset`
 
 ### 引数
 
