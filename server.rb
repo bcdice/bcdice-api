@@ -16,14 +16,17 @@ helpers do
   def diceroll(system, command)
     dicebot = BCDice::DICEBOTS[system]
     if dicebot.nil? || command.nil?
-      return nil, nil
+      return nil, nil, nil
     end
 
     bcdice = BCDiceMaker.new.newBcDice
     bcdice.setDiceBot(dicebot)
     bcdice.setMessage(command)
+    bcdice.setCollectRandResult(true)
 
-    return bcdice.dice_command
+    result, secret = bcdice.dice_command
+
+    return result, secret, bcdice.getRandResults
   end
 end
 
@@ -39,13 +42,22 @@ get "/v1/systems" do
   json systems: BCDice::SYSTEMS
 end
 
+get "/v1/systeminfo" do
+  dicebot = BCDice::DICEBOTS[params[:system]]
+  if dicebot.nil?
+    json ok: false
+  else
+    json ok: true, systeminfo: dicebot.info
+  end
+end
+
 get "/v1/diceroll" do
-  result, secret = diceroll(params[:system], params[:command])
+  result, secret, rand_results = diceroll(params[:system], params[:command])
 
   if result.nil?
     json ok: false
   else
-    json ok: true, result: result, secret: secret
+    json ok: true, result: result, secret: secret, rand_results: rand_results
   end
 end
 
@@ -54,7 +66,7 @@ get "/v1/onset" do
     return BCDice::SYSTEMS.join("\n")
   end
 
-  result, secret = diceroll(params[:sys] || "DiceBot", params[:text])
+  result, secret, rand_results = diceroll(params[:sys] || "DiceBot", params[:text])
 
   if result.nil?
     "error"
