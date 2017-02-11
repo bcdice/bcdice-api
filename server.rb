@@ -22,6 +22,7 @@ helpers do
     bcdice = BCDiceMaker.new.newBcDice
     bcdice.setDiceBot(dicebot)
     bcdice.setMessage(command)
+    bcdice.setDir("bcdice/extratables",system)
     bcdice.setCollectRandResult(true)
 
     result, secret = bcdice.dice_command
