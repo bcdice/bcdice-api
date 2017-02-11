@@ -3,4 +3,4 @@
 - `/v1/version`
 - `/v1/systems`
 - `/v1/diceroll`
-- `/v1/onset`
+- `/v1/onset` (thanks @daicyan)
