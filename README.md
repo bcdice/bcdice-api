@@ -1,6 +1,6 @@
 # BCDice-API
 
-BCDiceを提供するAPIサーバー
+BCDiceを提供するWebAPIサーバー
 
 ## Demo
 
@@ -16,6 +16,8 @@ $ git submodule update
 $ bundle install
 $ bundle exec rackup
 ```
+
+実際に運用する場合には、Unicornの利用をお勧めします。（[参考資料](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn)）
 
 ## API
 
