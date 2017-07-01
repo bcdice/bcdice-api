@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 require "bcdiceCore"
 require "diceBot/DiceBot"
+require "diceBot/DiceBotLoader"
 
 class BCDice
-  VERSION = "2.02.64"
+  VERSION = "2.02.70"
   SYSTEMS = []
   DICEBOTS = {}
 
@@ -42,8 +43,16 @@ class BCDice
   end
 end
 
+IGNORE_CODES = [
+  'DiceBotLoader.rb',
+  'DiceBotLoaderList.rb',
+  'baseBot.rb',
+  '_Template.rb',
+  'test.rb'
+].freeze
+
 Dir.glob("bcdice/src/diceBot/*.rb").each do |path|
-  if ["_Template.rb", "test.rb", "DiceBotLoader.rb"].include?(File.basename(path))
+  if IGNORE_CODES.include?(File.basename(path))
     next
   end
   require path
