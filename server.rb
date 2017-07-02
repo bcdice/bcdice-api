@@ -4,7 +4,7 @@ $:.unshift File.join(__dir__, "bcdice", "src")
 $:.unshift File.join(__dir__, "lib")
 
 require 'sinatra'
-require 'sinatra/json'
+require 'sinatra/jsonp'
 require 'bcdice_wrap'
 
 module BCDiceAPI
@@ -37,19 +37,19 @@ get "/" do
 end
 
 get "/v1/version" do
-  json api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
+  jsonp api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
 end
 
 get "/v1/systems" do
-  json systems: BCDice::SYSTEMS
+  jsonp systems: BCDice::SYSTEMS
 end
 
 get "/v1/systeminfo" do
   dicebot = BCDice::DICEBOTS[params[:system]]
   if dicebot.nil?
-    json ok: false
+    jsonp ok: false
   else
-    json ok: true, systeminfo: dicebot.info
+    jsonp ok: true, systeminfo: dicebot.info
   end
 end
 
@@ -57,9 +57,9 @@ get "/v1/diceroll" do
   result, secret, dices = diceroll(params[:system], params[:command])
 
   if result.nil?
-    json ok: false
+    jsonp ok: false
   else
-    json ok: true, result: result, secret: secret, dices: dices
+    jsonp ok: true, result: result, secret: secret, dices: dices
   end
 end
 

@@ -1,5 +1,8 @@
 # API詳細
 
+JSONを返却する全てのAPIはJSONPに対応しています。
+
+
 ## version
 
 WebAPIのバージョンと、提供するBCDiceのバージョンが返却されます。
