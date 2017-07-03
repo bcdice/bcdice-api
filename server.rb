@@ -47,6 +47,7 @@ end
 get "/v1/systeminfo" do
   dicebot = BCDice::DICEBOTS[params[:system]]
   if dicebot.nil?
+    status 400
     jsonp ok: false
   else
     jsonp ok: true, systeminfo: dicebot.info
@@ -57,6 +58,7 @@ get "/v1/diceroll" do
   result, secret, dices = diceroll(params[:system], params[:command])
 
   if result.nil?
+    status 400
     jsonp ok: false
   else
     jsonp ok: true, result: result, secret: secret, dices: dices
