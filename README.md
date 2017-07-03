@@ -11,13 +11,14 @@ https://bcdice.herokuapp.com
 ```
 $ git clone https://github.com/NKMR6194/bcdice-api.git
 $ cd bcdice-api
+$ git checkout `git describe --abbrev=0` #直近のリリースに移動
 $ git submodule init
 $ git submodule update
 $ bundle install
 $ bundle exec rackup
 ```
 
-実際に運用する場合には、Unicornの利用をお勧めします。（[参考資料](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn)）
+実際に運用する場合には、UnicornやPumaの利用をお勧めします。（[参考資料](http://recipes.sinatrarb.com/p/deployment/nginx_proxied_to_unicorn)）
 
 ## API
 
