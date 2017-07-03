@@ -78,3 +78,7 @@ get "/v1/onset" do
     "onset" + result
   end
 end
+
+not_found do
+  jsonp ok: false, reason: "not found"
+end
