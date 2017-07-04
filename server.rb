@@ -32,6 +32,10 @@ helpers do
     result, secret = bcdice.dice_command
     dices = bcdice.getRandResults.map {|dice| {faces: dice[1], value: dice[0]}}
 
+    if result.nil?
+      raise CommandError
+    end
+
     return result, secret, dices
   end
 end
@@ -59,9 +63,6 @@ end
 
 get "/v1/diceroll" do
   result, secret, dices = diceroll(params[:system], params[:command])
-  if result.nil?
-    raise CommandError
-  end
 
   jsonp ok: true, result: result, secret: secret, dices: dices
 end
@@ -71,12 +72,11 @@ get "/v1/onset" do
     return BCDice::SYSTEMS.join("\n")
   end
 
-  result, secret, dices = diceroll(params[:sys] || "DiceBot", params[:text])
-
-  if result.nil?
-    "error"
-  else
+  begin
+    result, secret, dices = diceroll(params[:sys] || "DiceBot", params[:text])
     "onset" + result
+  rescue UnsupportedDicebot, CommandError
+    "error"
   end
 end
 

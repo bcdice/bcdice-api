@@ -111,6 +111,36 @@ class API_Test < Test::Unit::TestCase
     assert_equal json["reason"], "unsupported command"
   end
 
+  def test_onset_list
+    get "/v1/onset?list=1"
+
+    list = last_response.body.split("\n")
+
+    assert last_response.ok?
+    assert_include list, "Amadeus"
+  end
+
+  def test_onset_diceroll
+    get "/v1/onset?sys=Cthulhu&text=1d20"
+
+    assert last_response.ok?
+    assert last_response.body.start_with?("onset: (1D20)")
+  end
+
+  def test_onset_unexpected_dicebot
+    get "/v1/onset?sys=AwesomeDicebot&text=1d20"
+
+    assert last_response.ok?
+    assert_equal last_response.body, "error"
+  end
+
+  def test_onset_unexpected_command
+    get "/v1/onset?sys=DiceBot&text=a"
+
+    assert last_response.ok?
+    assert_equal last_response.body, "error"
+  end
+
   def test_not_found
     get "/hogehoge"
     json = JSON.parse(last_response.body)
