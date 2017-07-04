@@ -6,3 +6,8 @@ gem "sinatra-contrib"
 gem "sinatra-jsonp"
 
 gem "puma"
+
+group :development, :test do
+  gem "rake"
+  gem "test-unit"
+end

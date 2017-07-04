@@ -2,6 +2,8 @@
 
 BCDiceを提供するWebAPIサーバー
 
+[![Build Status](https://travis-ci.org/NKMR6194/bcdice-api.svg?branch=master)](https://travis-ci.org/NKMR6194/bcdice-api)
+
 ## Demo
 
 https://bcdice.herokuapp.com

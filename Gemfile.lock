@@ -3,12 +3,14 @@ GEM
   specs:
     backports (3.6.8)
     multi_json (1.12.1)
+    power_assert (0.4.1)
     puma (3.8.2)
     rack (1.6.5)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
       rack (>= 1.0)
+    rake (12.0.0)
     sinatra (1.4.8)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -23,6 +25,8 @@ GEM
     sinatra-jsonp (0.4.4)
       multi_json (~> 1.8)
       sinatra (~> 1.0)
+    test-unit (3.2.3)
+      power_assert
     tilt (2.0.6)
 
 PLATFORMS
@@ -30,9 +34,11 @@ PLATFORMS
 
 DEPENDENCIES
   puma
+  rake
   sinatra
   sinatra-contrib
   sinatra-jsonp
+  test-unit
 
 BUNDLED WITH
    1.13.7
