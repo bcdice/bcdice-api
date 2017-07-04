@@ -78,6 +78,7 @@ class API_Test < Test::Unit::TestCase
 
     assert last_response.bad_request?
     assert_false json["ok"]
+    assert_equal json["reason"], "unsupported dicebot"
   end
 
   def test_no_dicebot
@@ -87,6 +88,7 @@ class API_Test < Test::Unit::TestCase
 
     assert last_response.bad_request?
     assert_false json["ok"]
+    assert_equal json["reason"], "unsupported dicebot"
   end
 
   def test_unexpected_command
@@ -96,15 +98,17 @@ class API_Test < Test::Unit::TestCase
 
     assert last_response.bad_request?
     assert_false json["ok"]
+    assert_equal json["reason"], "unsupported command"
   end
 
   def test_no_command
-    get "/v1/diceroll?system=DiceBot&command=a"
+    get "/v1/diceroll?system=DiceBot"
 
     json = JSON.parse(last_response.body)
 
     assert last_response.bad_request?
     assert_false json["ok"]
+    assert_equal json["reason"], "unsupported command"
   end
 
   def test_not_found

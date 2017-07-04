@@ -6,6 +6,7 @@ $:.unshift File.join(__dir__, "lib")
 require 'sinatra'
 require 'sinatra/jsonp'
 require 'bcdice_wrap'
+require 'exception'
 
 module BCDiceAPI
   VERSION = "0.3.0"
@@ -15,8 +16,11 @@ end
 helpers do
   def diceroll(system, command)
     dicebot = BCDice::DICEBOTS[system]
-    if dicebot.nil? || command.nil?
-      return nil, nil, nil
+    if dicebot.nil?
+      raise UnsupportedDicebot
+    end
+    if command.nil?
+      raise CommandError
     end
 
     bcdice = BCDiceMaker.new.newBcDice
@@ -47,22 +51,19 @@ end
 get "/v1/systeminfo" do
   dicebot = BCDice::DICEBOTS[params[:system]]
   if dicebot.nil?
-    status 400
-    jsonp ok: false
-  else
-    jsonp ok: true, systeminfo: dicebot.info
+    raise UnsupportedDicebot
   end
+
+  jsonp ok: true, systeminfo: dicebot.info
 end
 
 get "/v1/diceroll" do
   result, secret, dices = diceroll(params[:system], params[:command])
-
   if result.nil?
-    status 400
-    jsonp ok: false
-  else
-    jsonp ok: true, result: result, secret: secret, dices: dices
+    raise CommandError
   end
+
+  jsonp ok: true, result: result, secret: secret, dices: dices
 end
 
 get "/v1/onset" do
@@ -81,4 +82,18 @@ end
 
 not_found do
   jsonp ok: false, reason: "not found"
+end
+
+error UnsupportedDicebot do
+  status 400
+  jsonp ok: false, reason: "unsupported dicebot"
+end
+
+error CommandError do
+  status 400
+  jsonp ok: false, reason: "unsupported command"
+end
+
+error do
+  jsonp ok: false
 end
