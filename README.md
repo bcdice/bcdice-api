@@ -32,6 +32,12 @@ Method                           | Description
 [/v1/diceroll](/docs/api.md#diceroll) | ダイスボットのコマンドを実行
 [/v1/onset](/docs/api.md#onset)       | Onset!互換
 
+## Cases
+
+- [discord-bcdicebot](https://shunshun94.github.io/discord-bcdicebot/)
+- [Line botでダイスを振る - Qiita](http://qiita.com/violet2525/items/85607f2cc466a76cca07)
+- [bcdice-api | 大ちゃんのいろいろ雑記](https://www.taruki.com/wp/?p=6507) : どどんとふ公式鯖による公開サーバー
+
 ## Donate
 
 - [Amazonほしい物リスト](http://amzn.asia/gK5kW6A)
