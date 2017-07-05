@@ -31,3 +31,12 @@ Method                           | Description
 [/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得
 [/v1/diceroll](/docs/api.md#diceroll) | ダイスボットのコマンドを実行
 [/v1/onset](/docs/api.md#onset)       | Onset!互換
+
+## Donate
+
+- [Amazonほしい物リスト](http://amzn.asia/gK5kW6A)
+- [Amazonギフト券](https://www.amazon.co.jp/Amazonギフト券-Eメールタイプ/dp/BT00DHI8G) 宛先: donate@sakasin.net
+
+## The Auther
+
+酒田　シンジ (@NKMR6194)
