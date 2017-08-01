@@ -4,9 +4,16 @@ require "diceBot/DiceBot"
 require "diceBot/DiceBotLoader"
 
 class BCDice
-  VERSION = "2.02.70"
-  SYSTEMS = []
-  DICEBOTS = {}
+  VERSION = "2.02.71"
+
+  DICEBOTS = (DiceBotLoader.collectDiceBots + [DiceBot.new]).
+    map { |diceBot| [diceBot.gameType, diceBot] }.
+    to_h.
+    freeze
+
+  SYSTEMS = DICEBOTS.keys.
+    sort.
+    freeze
 
   def dice_command   # ダイスコマンドの分岐処理
     arg = @message.upcase
@@ -43,25 +50,6 @@ class BCDice
   end
 end
 
-IGNORE_CODES = [
-  'DiceBotLoader.rb',
-  'DiceBotLoaderList.rb',
-  'baseBot.rb',
-  '_Template.rb',
-  'test.rb'
-].freeze
-
-Dir.glob("bcdice/src/diceBot/*.rb").each do |path|
-  if IGNORE_CODES.include?(File.basename(path))
-    next
-  end
-  require path
-  klass = Module.const_get(File.basename(path, ".rb"))
-  dicebot = klass.new
-  BCDice::DICEBOTS[dicebot.gameType] = dicebot
-  BCDice::SYSTEMS << dicebot.gameType
-end
-
 class DiceBot
   def getHelpMessage
     return <<INFO_MESSAGE_TEXT
@@ -85,8 +73,3 @@ class DiceBot
 INFO_MESSAGE_TEXT
   end
 end
-
-BCDice::SYSTEMS.sort!
-
-BCDice::DICEBOTS.freeze
-BCDice::SYSTEMS.freeze
