@@ -1,3 +1,9 @@
+## 0.5.0
+
+- BCDice Ver2.02.72 にアップデート
+- 処理の一部を最適化 (thanks @ochaochaocha3)
+
+
 ## 0.4.0
 
 - JSONPに対応
