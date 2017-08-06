@@ -8,6 +8,13 @@ BCDiceを提供するWebAPIサーバー
 
 https://bcdice.herokuapp.com
 
+## What is BCDice
+
+BCDiceは日本のTRPGセッションツールにおいて、デファクトスタンダードとも言えるダイスロールエンジンです。
+初めは、Faceless氏によってPerlを用いて作成されました。後に、たいたい竹流氏によってRubyへの移植され、現在までメンテナンスされています。
+
+BCDiceは[どどんとふ](http://www.dodontof.com)をはじめとして、[TRPGオンラインセッションSNS](https://trpgsession.click)や[Onset!](https://github.com/kiridaruma/Onset)においてダイスロールエンジンとして使われています。
+
 ## Setup
 
 ```
