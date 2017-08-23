@@ -1,7 +1,4 @@
 {
   "name": "BCDice-API",
-  "repository": "https://github.com/NKMR6194/bcdice-api",
-  "scripts": {
-    "postdeploy": "git submodule init; git submodule update"
-  }
+  "repository": "https://github.com/NKMR6194/bcdice-api"
 }
