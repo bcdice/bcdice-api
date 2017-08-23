@@ -9,8 +9,7 @@ gem "sinatra-jsonp"
 
 gem "puma"
 
-gem "rake"
-
 group :development, :test do
+  gem "rake"
   gem "test-unit"
 end
