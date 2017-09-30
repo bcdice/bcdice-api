@@ -10,4 +10,5 @@ gem "puma"
 group :development, :test do
   gem "rake"
   gem "test-unit"
+  gem "rack-test"
 end
