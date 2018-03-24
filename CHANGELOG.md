@@ -1,3 +1,9 @@
+## 0.5.2
+
+- BCDice Ver2.02.76 にアップデート
+- Sinatra 2.0.0 の脆弱性発見に伴い、依存Gemの更新
+- [for developer] Ruby 2.5.0での動作確認
+
 ## 0.5.1
 
 - BCDice Ver2.02.73 にアップデート
