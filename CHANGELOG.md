@@ -1,3 +1,8 @@
+## 0.5.2
+
+- BCDice Ver2.02.76 にアップデート
+- [for developer] Ruby 2.5系でのテスト
+
 ## 0.5.1
 
 - BCDice Ver2.02.73 にアップデート
