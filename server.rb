@@ -12,6 +12,9 @@ module BCDiceAPI
   VERSION = "0.5.2"
 end
 
+configure :production do
+  set :dump_errors, false
+end
 
 helpers do
   def diceroll(system, command)
