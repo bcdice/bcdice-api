@@ -22,7 +22,7 @@ helpers do
     if dicebot.nil?
       raise UnsupportedDicebot
     end
-    if command.nil?
+    if command.nil? || command.empty?
       raise CommandError
     end
 
