@@ -111,6 +111,46 @@ class API_Test < Test::Unit::TestCase
     assert_equal json["reason"], "unsupported command"
   end
 
+  def test_no_params
+    get "/v1/diceroll"
+
+    json = JSON.parse(last_response.body)
+
+    assert last_response.bad_request?
+    assert_false json["ok"]
+    assert_equal json["reason"], "unsupported dicebot"
+  end
+
+  def test_blank_system
+    get "/v1/diceroll?system="
+
+    json = JSON.parse(last_response.body)
+
+    assert last_response.bad_request?
+    assert_false json["ok"]
+    assert_equal json["reason"], "unsupported dicebot"
+  end
+
+  def test_blank_command
+    get "/v1/diceroll?system=DiceBot&command="
+
+    json = JSON.parse(last_response.body)
+
+    assert last_response.bad_request?
+    assert_false json["ok"]
+    assert_equal json["reason"], "unsupported command"
+  end
+
+  def test_blank_both
+    get "/v1/diceroll?system=&command="
+
+    json = JSON.parse(last_response.body)
+
+    assert last_response.bad_request?
+    assert_false json["ok"]
+    assert_equal json["reason"], "unsupported dicebot"
+  end
+
   def test_onset_list
     get "/v1/onset?list=1"
 
