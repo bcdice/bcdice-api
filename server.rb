@@ -9,7 +9,7 @@ require 'bcdice_wrap'
 require 'exception'
 
 module BCDiceAPI
-  VERSION = "0.5.2"
+  VERSION = "0.5.3"
 end
 
 configure :production do
