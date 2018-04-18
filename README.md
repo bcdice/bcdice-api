@@ -2,7 +2,7 @@
 
 BCDiceを提供するWebAPIサーバー
 
-[![Build Status](https://travis-ci.org/NKMR6194/bcdice-api.svg?branch=master)](https://travis-ci.org/NKMR6194/bcdice-api)
+[![Build Status](https://travis-ci.org/ysakasin/bcdice-api.svg?branch=master)](https://travis-ci.org/ysakasin/bcdice-api)
 
 ## Demo
 
@@ -18,7 +18,7 @@ BCDiceは[どどんとふ](http://www.dodontof.com)をはじめとして、[TRPG
 ## Setup
 
 ```
-$ git clone https://github.com/NKMR6194/bcdice-api.git
+$ git clone https://github.com/ysakasin/bcdice-api.git
 $ cd bcdice-api
 $ git checkout `git describe --abbrev=0` #直近のリリースに移動
 $ git submodule init
@@ -32,7 +32,7 @@ $ bundle exec rackup
 ## API
 
 Method                           | Description
--------------------------------- | ----- 
+-------------------------------- | -----
 [/v1/version](/docs/api.md#version)   | BCDiceとAPIサーバーのバージョン
 [/v1/systems](/docs/api.md#systems)   | ダイスボットのシステム名一覧
 [/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得
@@ -52,4 +52,4 @@ Method                           | Description
 
 ## The Auther
 
-酒田　シンジ (@NKMR6194)
+酒田　シンジ (@ysakasin)
