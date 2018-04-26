@@ -43,7 +43,8 @@ Method                           | Description
 
 - [discord-bcdicebot](https://shunshun94.github.io/discord-bcdicebot/)
 - [Line botでダイスを振る - Qiita](http://qiita.com/violet2525/items/85607f2cc466a76cca07)
-- [bcdice-api | 大ちゃんのいろいろ雑記](https://www.taruki.com/wp/?p=6507) : どどんとふ公式鯖による公開サーバー
+- [HTTPS版BCDice-API | 大ちゃんのいろいろ雑記](https://www.taruki.com/wp/?p=6610) : どどんとふ公式鯖による公開サーバー
+- [オンラインセッションツール – Hotch Potch .](https://aimsot.net/tool-info/) : えいむ氏による公開サーバー
 
 ## Donate
 
