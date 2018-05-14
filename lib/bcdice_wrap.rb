@@ -17,8 +17,7 @@ class BCDice
     freeze
 
   NAMES = DICEBOTS.
-    map { |gameType, diceBot| [gameType, diceBot.gameName] }.
-    to_h.
+    map { |gameType, diceBot| {system: gameType, name: diceBot.gameName} }.
     freeze
 
   def dice_command   # ダイスコマンドの分岐処理
