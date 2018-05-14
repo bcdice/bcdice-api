@@ -5,16 +5,11 @@ $:.unshift File.join(__dir__, "lib")
 
 require 'sinatra'
 require 'sinatra/jsonp'
-require 'sinatra/cross_origin'
 require 'bcdice_wrap'
 require 'exception'
 
 module BCDiceAPI
   VERSION = "0.5.3"
-end
-
-configure do
-  enable :cross_origin
 end
 
 configure :production do
@@ -46,6 +41,10 @@ helpers do
 
     return result, secret, dices
   end
+end
+
+before do
+  response.headers['Access-Control-Allow-Origin'] = '*'
 end
 
 get "/" do
