@@ -4,7 +4,7 @@ require "diceBot/DiceBot"
 require "diceBot/DiceBotLoader"
 
 class BCDice
-  VERSION = "2.02.76"
+  VERSION = "2.02.77"
 
   DICEBOTS = (DiceBotLoader.collectDiceBots + [DiceBot.new]).
     map { |diceBot| [diceBot.gameType, diceBot] }.
