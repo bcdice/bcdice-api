@@ -8,11 +8,17 @@ class BCDice
 
   DICEBOTS = (DiceBotLoader.collectDiceBots + [DiceBot.new]).
     map { |diceBot| [diceBot.gameType, diceBot] }.
+    sort.
     to_h.
     freeze
 
   SYSTEMS = DICEBOTS.keys.
     sort.
+    freeze
+
+  NAMES = DICEBOTS.
+    map { |gameType, diceBot| [gameType, diceBot.gameName] }.
+    to_h.
     freeze
 
   def dice_command   # ダイスコマンドの分岐処理

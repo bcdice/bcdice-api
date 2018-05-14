@@ -35,6 +35,15 @@ class API_Test < Test::Unit::TestCase
     assert_false json["systems"].empty?
   end
 
+  def test_names
+    get "/v1/names"
+    json = JSON.parse(last_response.body)
+
+    assert       last_response.ok?
+    assert_false json["names"].empty?
+    assert_equal json["names"]["DungeonsAndDoragons"], "ダンジョンズ＆ドラゴンズ"
+  end
+
   def test_systeminfo
     get "/v1/systeminfo?system=DiceBot"
     json = JSON.parse(last_response.body)

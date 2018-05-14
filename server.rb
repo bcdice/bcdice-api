@@ -59,6 +59,10 @@ get "/v1/systems" do
   jsonp systems: BCDice::SYSTEMS
 end
 
+get "/v1/names" do
+  jsonp names: BCDice::NAMES
+end
+
 get "/v1/systeminfo" do
   dicebot = BCDice::DICEBOTS[params[:system]]
   if dicebot.nil?

@@ -34,7 +34,8 @@ $ bundle exec rackup
 Method                           | Description
 -------------------------------- | -----
 [/v1/version](/docs/api.md#version)   | BCDiceとAPIサーバーのバージョン
-[/v1/systems](/docs/api.md#systems)   | ダイスボットのシステム名一覧
+[/v1/systems](/docs/api.md#systems)   | ダイスボットのシステムID一覧
+[/v1/names](/docs/api.md#names)       | ダイスボットのシステムIDとシステム名前の一覧
 [/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得
 [/v1/diceroll](/docs/api.md#diceroll) | ダイスボットのコマンドを実行
 [/v1/onset](/docs/api.md#onset)       | Onset!互換
