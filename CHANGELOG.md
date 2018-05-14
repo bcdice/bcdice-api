@@ -1,3 +1,9 @@
+## 0.6.0
+
+- `/v1/names` を追加 ([Document](/docs/api.md#names))
+- CORSに対応
+
+
 ## 0.5.3
 
 - Production実行時にはエラーログにバックトレースを出力しない
