@@ -73,18 +73,18 @@ WebAPIで利用できるダイスボットのシステムID一覧が返却され
 
 ```json
 {
-  "names": {
-    "Alshard": "アルシャード",
-    "Cthulhu": "クトゥルフ",
-    "DiceBot": "DiceBot",
-    "DoubleCross": "ダブルクロス2nd,3rd",
-    "DungeonsAndDoragons": "ダンジョンズ＆ドラゴンズ",
-    "Gorilla": "ゴリラTRPG",
-    "Gundog": "ガンドッグ",
-    "LogHorizon": "ログ・ホライズン",
-    "Nechronica": "ネクロニカ",
-    "SwordWorld2.0": "ソードワールド2.0"
-  }
+  "names": [
+    {"system": "Alshard", "name": "アルシャード"},
+    {"system": "Cthulhu", "name": "クトゥルフ"},
+    {"system": "DiceBot", "name": "DiceBot"},
+    {"system": "DoubleCross", "name": "ダブルクロス2nd,3rd"},
+    {"system": "DungeonsAndDoragons", "name": "ダンジョンズ＆ドラゴンズ"},
+    {"system": "Gorilla", "name": "ゴリラTRPG"},
+    {"system": "Gundog", "name": "ガンドッグ"},
+    {"system": "LogHorizon", "name": "ログ・ホライズン"},
+    {"system": "Nechronica", "name": "ネクロニカ"},
+    {"system": "SwordWorld2.0", "name": "ソードワールド2.0"}
+  ]
 }
 ```
 
