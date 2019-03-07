@@ -1,3 +1,10 @@
+## 0.6.1
+
+- BCDice Ver2.02.79 にアップデート
+- 依存Gemのアップデート
+- Ruby 2.6をサポート対象に
+- Ruby 2.2をサポート対象外に
+
 ## 0.6.0
 
 - `/v1/names` を追加 ([Document](/docs/api.md#names))
