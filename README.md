@@ -40,6 +40,10 @@ Method                           | Description
 [/v1/diceroll](/docs/api.md#diceroll) | ダイスボットのコマンドを実行
 [/v1/onset](/docs/api.md#onset)       | Onset!互換
 
+## Documents
+
+- [無料で独自ダイスボット入りのBCDice-APIサーバーを立てる](docs/heroku.md) (中級者向け)
+
 ## Cases
 
 - [discord-bcdicebot](https://shunshun94.github.io/discord-bcdicebot/)
