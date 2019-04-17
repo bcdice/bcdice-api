@@ -122,7 +122,7 @@ BCDice-APIではオリジナルのBCDiceを参照しています。今回は独�
 git clone https://github.com/ysakasin/bcdice-api
 ```
 
-Cloneしたファイルの中にある `.gitsubmodule` を編集します。デフォルトでは以下のようになっていますが、
+Cloneしたファイルの中にある `.gitmodule` を編集します。デフォルトでは以下のようになっていますが、
 
 ```
 [submodule "bcdice"]
