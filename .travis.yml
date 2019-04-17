@@ -10,4 +10,4 @@ script:
   - bundle exec rake test
 
 before_install:
-  - gem install bundler
+  - gem install bundler -v '1.17.3'
