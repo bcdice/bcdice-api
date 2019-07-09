@@ -46,9 +46,6 @@ class BCDice
     output, secret = checkChoiceCommand(arg)
     return output, secret unless( output.nil? )
 
-    output, secret = getTableDataResult(arg)
-    return output, secret unless( output.nil? )
-
     output = nil #BCDiceからの変更点
     secret = nil
     return output, secret
