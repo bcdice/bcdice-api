@@ -78,7 +78,7 @@ class BCDice
     end
 
     calc_result = matches[1]
-    return "#{@diceBot.gameType} : 計算結果 ＞ #{calc_result}", false
+    return ": 計算結果 ＞ #{calc_result}", false
   end
 end
 

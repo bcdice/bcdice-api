@@ -92,7 +92,7 @@ class API_Test < Test::Unit::TestCase
 
     assert last_response.ok?
     assert json["ok"]
-    assert json["result"].start_with?("DiceBot : 計算結果 ＞ ")
+    assert json["result"].start_with?(": 計算結果 ＞ ")
     assert_equal json["dices"], []
     assert_false json["secret"]
   end
