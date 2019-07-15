@@ -18,6 +18,20 @@ class BCDice
     map { |gameType, diceBot| {system: gameType, name: diceBot.gameName} }.
     freeze
 
+  # 与えられた文字列が計算コマンドのようであるかを返す
+  # @param [String] s 調べる文字列
+  # @return [true] sが計算コマンドのようであった場合
+  # @return [false] sが計算コマンドではない場合
+  #
+  # 詳細な構文解析は行わない。
+  # 計算コマンドで使われ得る文字のみで構成されているかどうかだけを調べる。
+  def self.seem_to_be_calc?(s)
+    # 空白が含まれる場合、最初の部分だけを取り出す
+    target = s.split(/\s/, 2).first
+
+    return %r{\AC\([-+*/()\d]+\)\z}i === target
+  end
+
   def dice_command   # ダイスコマンドの分岐処理
     arg = @message.upcase
 
@@ -47,6 +61,24 @@ class BCDice
     output = nil #BCDiceからの変更点
     secret = nil
     return output, secret
+  end
+
+  # 計算コマンドの実行を試みる
+  # @return [Array<String, false>] 計算コマンドの実行に成功した場合
+  # @return [nil, nil] 計算コマンドの実行に失敗した場合
+  #
+  # 返り値の2つ目の要素は、`result, secret =` と受け取れるようにするために
+  # 用意している。
+  def try_calc_command
+    stripped_message = @message.strip
+    matches = stripped_message.match(/\AC([-\d]+\z)/i)
+
+    if matches.nil?
+      return nil, nil
+    end
+
+    calc_result = matches[1]
+    return "#{@diceBot.gameType} : 計算結果 ＞ #{calc_result}", false
   end
 end
 
