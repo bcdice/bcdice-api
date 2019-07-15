@@ -29,7 +29,7 @@ class BCDice
     # 空白が含まれる場合、最初の部分だけを取り出す
     target = s.split(/\s/, 2).first
 
-    return %r{\AC\([-+*/()\d]+\)\z}i === target
+    return target.match?(%r{\AC\([-+*/()\d]+\)\z}i)
   end
 
   def dice_command   # ダイスコマンドの分岐処理
@@ -71,7 +71,7 @@ class BCDice
   # 用意している。
   def try_calc_command
     stripped_message = @message.strip
-    matches = stripped_message.match(/\AC([-\d]+\z)/i)
+    matches = stripped_message.match(/\AC(-?\d+)\z/i)
 
     if matches.nil?
       return nil, nil
