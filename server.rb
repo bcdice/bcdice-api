@@ -34,15 +34,7 @@ helpers do
     result, secret = bcdice.dice_command
 
     if result.nil?
-      # 計算コマンドの実行を試みる
-
-      # "C(1+1)" のような計算コマンドは受け付けるが、"C1" のように "C" の後に
-      # 数字のみが書かれているコマンドなどは拒絶するために必要な処理。
-      # BCDice側では、設定されたメッセージが計算コマンドかどうかの判定を行って
-      # いないため、やむを得ずここで判定する。
-      if BCDice.seem_to_be_calc?(command)
-        result, secret = bcdice.try_calc_command
-      end
+      result, secret = bcdice.try_calc_command(command)
     end
 
     dices = bcdice.getRandResults.map {|dice| {faces: dice[1], value: dice[0]}}

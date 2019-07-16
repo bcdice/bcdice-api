@@ -61,12 +61,21 @@ class BCDice
   end
 
   # 計算コマンドの実行を試みる
+  # @param [String] command 入力されたコマンド
   # @return [Array<String, false>] 計算コマンドの実行に成功した場合
   # @return [nil, nil] 計算コマンドの実行に失敗した場合
   #
   # 返り値の2つ目の要素は、`result, secret =` と受け取れるようにするために
   # 用意している。
-  def try_calc_command
+  def try_calc_command(command)
+    # "C(1+1)" のような計算コマンドは受け付けるが、"C1" のように "C" の後に数字
+    # のみが書かれているコマンドなどは拒絶するために必要な処理。
+    # BCDice側では、設定されたメッセージが計算コマンドかどうかの判定を行って
+    # いないため、やむを得ずここで判定する。
+    unless self.class.seem_to_be_calc?(command)
+      return nil, nil
+    end
+
     stripped_message = @message.strip
     matches = stripped_message.match(/\AC(-?\d+)\z/i)
 
