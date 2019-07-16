@@ -32,6 +32,11 @@ helpers do
     bcdice.setCollectRandResult(true)
 
     result, secret = bcdice.dice_command
+
+    if result.nil?
+      result, secret = bcdice.try_calc_command(command)
+    end
+
     dices = bcdice.getRandResults.map {|dice| {faces: dice[1], value: dice[0]}}
 
     if result.nil?
