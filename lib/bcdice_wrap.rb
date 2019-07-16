@@ -26,10 +26,7 @@ class BCDice
   # 詳細な構文解析は行わない。
   # 計算コマンドで使われ得る文字のみで構成されているかどうかだけを調べる。
   def self.seem_to_be_calc?(s)
-    # 空白が含まれる場合、最初の部分だけを取り出す
-    target = s.split(/\s/, 2).first
-
-    return target.match?(%r{\AC\([-+*/()\d]+\)\z}i)
+    return s.match?(%r{\AC\([-+*/()\d]+\)}i)
   end
 
   def dice_command   # ダイスコマンドの分岐処理
