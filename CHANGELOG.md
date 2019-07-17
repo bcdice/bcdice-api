@@ -1,3 +1,8 @@
+## 0.7.0
+
+- 計算コマンドに対応 (thanks @ochaochaocha3)
+
+
 ## 0.6.3
 
 - BCDice Ver2.03.01 にアップデート
