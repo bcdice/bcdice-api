@@ -54,7 +54,7 @@ Method                           | Description
 ## Donate
 
 - [Amazonほしい物リスト](http://amzn.asia/gK5kW6A)
-- [Amazonギフト券](https://www.amazon.co.jp/Amazonギフト券-Eメールタイプ/dp/BT00DHI8G) 宛先: donate@sakasin.net
+- [Amazonギフト券](https://www.amazon.co.jp/dp/B004N3APGO/) 宛先: ysakasin@gmail.com
 
 ## The Auther
 
