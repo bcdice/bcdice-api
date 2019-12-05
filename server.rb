@@ -5,6 +5,7 @@ $:.unshift File.join(__dir__, "lib")
 
 require 'sinatra'
 require 'sinatra/jsonp'
+require "sinatra/reloader" if development?
 require 'bcdice_wrap'
 require 'exception'
 
