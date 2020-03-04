@@ -11,7 +11,7 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rake (12.3.2)
+    rake (12.3.3)
     sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
