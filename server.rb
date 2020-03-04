@@ -83,19 +83,6 @@ get "/v1/diceroll" do
   jsonp ok: true, result: result, secret: secret, dices: dices
 end
 
-get "/v1/onset" do
-  if params[:list] == "1"
-    return BCDice::SYSTEMS.join("\n")
-  end
-
-  begin
-    result, secret, dices = diceroll(params[:sys] || "DiceBot", params[:text])
-    "onset" + result
-  rescue UnsupportedDicebot, CommandError
-    "error"
-  end
-end
-
 not_found do
   jsonp ok: false, reason: "not found"
 end
