@@ -7,6 +7,7 @@ require 'sinatra'
 require 'sinatra/jsonp'
 require "sinatra/reloader" if development?
 require 'bcdice_wrap'
+require 'load_config'
 require 'exception'
 
 module BCDiceAPI
@@ -57,7 +58,7 @@ get "/" do
 end
 
 get "/v1/version" do
-  jsonp api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
+  jsonp api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION, admin: BCDiceAPI::ADMIN
 end
 
 get "/v1/systems" do

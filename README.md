@@ -24,6 +24,8 @@ $ git checkout `git describe --abbrev=0` #直近のリリースに移動
 $ git submodule init
 $ git submodule update
 $ bundle install
+$ cp config/admin.yaml.example config/admin.yaml
+$ vim config/admin.yaml
 ```
 
 ## Run

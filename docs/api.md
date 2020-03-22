@@ -21,6 +21,10 @@ WebAPIのバージョンと、提供するBCDiceのバージョンが返却さ�
 {
   "api" : "0.0.0",
   "bcdice" : "2.02.64"
+  "admin" : {
+    "name": "user-name",
+    "address": "https://your-information-page/url"
+  }
 }
 ```
 
