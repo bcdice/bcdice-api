@@ -24,8 +24,6 @@ $ git checkout `git describe --abbrev=0` #直近のリリースに移動
 $ git submodule init
 $ git submodule update
 $ bundle install
-$ cp config/admin.yaml.example config/admin.yaml
-$ vim config/admin.yaml
 ```
 
 ## Run
@@ -51,6 +49,7 @@ $ APP_ENV=production bundle exec rackup -E deployment
 Method                           | Description
 -------------------------------- | -----
 [/v1/version](/docs/api.md#version)   | BCDiceとAPIサーバーのバージョン
+[/v1/admin](/docs/api.md#admin)       | APIサーバ提供者の名前と連絡先
 [/v1/systems](/docs/api.md#systems)   | ダイスボットのシステムID一覧
 [/v1/names](/docs/api.md#names)       | ダイスボットのシステムIDとシステム名前の一覧
 [/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得

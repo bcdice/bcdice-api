@@ -21,10 +21,28 @@ WebAPIのバージョンと、提供するBCDiceのバージョンが返却さ�
 {
   "api" : "0.0.0",
   "bcdice" : "2.02.64"
-  "admin" : {
-    "name": "user-name",
-    "address": "https://your-information-page/url"
-  }
+}
+```
+
+
+## admin
+
+WebAPIを提供する管理者の名前と連絡先が返却されます。
+
+### URL
+
+`/v1/admin`
+
+### 引数
+
+なし
+
+### レスポンス例
+
+```json
+{
+  "name": "user-name",
+  "address": "https://your-information-page/url"
 }
 ```
 

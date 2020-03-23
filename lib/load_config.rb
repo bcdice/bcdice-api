@@ -2,18 +2,28 @@
 require 'yaml'
 
 module BCDiceAPI
-  path = File.expand_path('../config/admin.yaml', __dir__)
-  if File.exist?(path)
-    yaml = YAML.load_file(path)
-  else
-    yaml = {
-      name: nil,
-      address: nil
-    }.freeze
+  def self.load_config
+    path = File.expand_path('../config/admin.yaml', __dir__)
+    config = if File.exist?(path)
+        yaml = YAML.load_file(path)
+        {
+          name: yaml['admin_name'],
+          address: yaml['admin_address']
+        }
+      else
+        {
+          name: nil,
+          address: nil
+        }
+      end
+
+    config.merge(
+      {
+        name: ENV['BCDiceAPI_ADMIN_NAME'],
+        address: ENV['BCDiceAPI_ADMIN_ADDRESS']
+      }.compact
+    )
   end
 
-  ADMIN = {
-    name: yaml['admin_name'],
-    address: yaml['admin_address']
-  }
+  ADMIN = load_config
 end

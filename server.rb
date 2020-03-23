@@ -58,7 +58,11 @@ get "/" do
 end
 
 get "/v1/version" do
-  jsonp api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION, admin: BCDiceAPI::ADMIN
+  jsonp api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
+end
+
+get "/v1/admin" do
+  jsonp BCDiceAPI::ADMIN
 end
 
 get "/v1/systems" do
