@@ -42,7 +42,8 @@ WebAPIを提供する管理者の名前と連絡先が返却されます。
 ```json
 {
   "name": "user-name",
-  "address": "https://your-information-page/url"
+  "url": "https://your-information-page/url",
+  "email": "your@email.address"
 }
 ```
 

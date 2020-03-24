@@ -7,7 +7,7 @@ require 'sinatra'
 require 'sinatra/jsonp'
 require "sinatra/reloader" if development?
 require 'bcdice_wrap'
-require 'load_config'
+require 'load_admin_info'
 require 'exception'
 
 module BCDiceAPI
