@@ -9,9 +9,9 @@ module BCDiceAPI
     if File.exist?(path)
       yaml = YAML.load_file(path)
       config = {
-        name: yaml['name'],
-        url: yaml['url'],
-        email: yaml['email']
+        name: yaml['name'].to_s,
+        url: yaml['url'].to_s,
+        email: yaml['email'].to_s
       }
     end
 
