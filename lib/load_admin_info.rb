@@ -19,9 +19,9 @@ module BCDiceAPI
       }
     end
 
-    config[:name] = ENV['BCDICEAPI_ADMIN_NAME'] if ENV['BCDICEAPI_ADMIN_NAME']
-    config[:url] = ENV['BCDICEAPI_ADMIN_URL'] if ENV['BCDICEAPI_ADMIN_URL']
-    config[:email] = ENV['BCDICEAPI_ADMIN_EMAIL'] if ENV['BCDICEAPI_ADMIN_EMAIL']
+    config[:name] = ENV['BCDICE_API_ADMIN_NAME'] if ENV['BCDICE_API_ADMIN_NAME']
+    config[:url] = ENV['BCDICE_API_ADMIN_URL'] if ENV['BCDICE_API_ADMIN_URL']
+    config[:email] = ENV['BCDICE_API_ADMIN_EMAIL'] if ENV['BCDICE_API_ADMIN_EMAIL']
 
     config
   end
