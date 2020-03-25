@@ -49,6 +49,7 @@ $ APP_ENV=production bundle exec rackup -E deployment
 Method                           | Description
 -------------------------------- | -----
 [/v1/version](/docs/api.md#version)   | BCDiceとAPIサーバーのバージョン
+[/v1/admin](/docs/api.md#admin)       | APIサーバ提供者の名前と連絡先
 [/v1/systems](/docs/api.md#systems)   | ダイスボットのシステムID一覧
 [/v1/names](/docs/api.md#names)       | ダイスボットのシステムIDとシステム名前の一覧
 [/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得

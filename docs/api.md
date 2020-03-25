@@ -25,6 +25,29 @@ WebAPIのバージョンと、提供するBCDiceのバージョンが返却さ�
 ```
 
 
+## admin
+
+WebAPIを提供する管理者の名前と連絡先が返却されます。
+
+### URL
+
+`/v1/admin`
+
+### 引数
+
+なし
+
+### レスポンス例
+
+```json
+{
+  "name": "user-name",
+  "url": "https://your-information-page/url",
+  "email": "your@email.address"
+}
+```
+
+
 ## systems
 
 WebAPIで利用できるダイスボットのシステムID一覧が返却されます。システムIDは、各ダイスボットが `gameType()` で返す文字列で、ダイスロールの実行時に利用します。
