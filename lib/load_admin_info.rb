@@ -3,7 +3,11 @@ require 'yaml'
 
 module BCDiceAPI
   def self.load_admin_info
-    config = {}
+    config = {
+      name: '',
+      url: '',
+      email: ''
+    }
 
     path = File.expand_path('../config/admin.yaml', __dir__)
     if File.exist?(path)
@@ -15,9 +19,9 @@ module BCDiceAPI
       }
     end
 
-    config[:name] = ENV['BCDiceAPI_ADMIN_NAME'] if ENV['BCDiceAPI_ADMIN_NAME']
-    config[:url] = ENV['BCDiceAPI_ADMIN_URL'] if ENV['BCDiceAPI_ADMIN_URL']
-    config[:email] = ENV['BCDiceAPI_ADMIN_EMAIL'] if ENV['BCDiceAPI_ADMIN_EMAIL']
+    config[:name] = ENV['BCDICEAPI_ADMIN_NAME'] if ENV['BCDICEAPI_ADMIN_NAME']
+    config[:url] = ENV['BCDICEAPI_ADMIN_URL'] if ENV['BCDICEAPI_ADMIN_URL']
+    config[:email] = ENV['BCDICEAPI_ADMIN_EMAIL'] if ENV['BCDICEAPI_ADMIN_EMAIL']
 
     config
   end
