@@ -1,3 +1,10 @@
+## 0.9.0
+
+- `/v1/admin` を追加 ([Document](/docs/api.md#admin)) (#17) (thanks @koi-chan)
+- `/v1/diceroll` の出力に `detailed_rands` を追加 ([Document](/docs/api.md#detailed_rands)) (#18)
+- BCDice Ver2.04.00 にアップデート
+
+
 ## 0.8.0
 
 - `/v1/onset` を削除

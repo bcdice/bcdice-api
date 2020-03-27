@@ -44,6 +44,9 @@ $ APP_ENV=production bundle exec rackup -E deployment
 - [Configuration](https://github.com/puma/puma#configuration)
 - [設定例](https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#config)
 
+公開サーバーとして運用する場合、 `/v1/admin` の情報を設定するようにしてください。
+- [/v1/admin 設定方法](/docs/api.md#admin)
+
 ## API
 
 Method                           | Description

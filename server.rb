@@ -11,7 +11,7 @@ require 'load_admin_info'
 require 'exception'
 
 module BCDiceAPI
-  VERSION = "0.8.0"
+  VERSION = "0.9.0"
 end
 
 configure :production do
