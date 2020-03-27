@@ -5,7 +5,7 @@ require "diceBot/DiceBotLoader"
 
 class BCDice
   DICEBOTS = (DiceBotLoader.collectDiceBots + [DiceBot.new]).
-    map { |diceBot| [diceBot.gameType, diceBot] }.
+    map { |diceBot| [diceBot.id, diceBot] }.
     sort.
     to_h.
     freeze
@@ -15,7 +15,7 @@ class BCDice
     freeze
 
   NAMES = DICEBOTS.
-    map { |gameType, diceBot| {system: gameType, name: diceBot.gameName} }.
+    map { |gameType, diceBot| {system: diceBot.id, name: diceBot.name} }.
     freeze
 
   # 与えられた文字列が計算コマンドのようであるかを返す
@@ -89,8 +89,7 @@ class BCDice
 end
 
 class DiceBot
-  def getHelpMessage
-    return <<INFO_MESSAGE_TEXT
+  HELP_MESSAGE = <<INFO_MESSAGE_TEXT
 【ダイスボット】チャットにダイス用の文字を入力するとダイスロールが可能
 入力例）２ｄ６＋１　攻撃！
 出力例）2d6+1　攻撃！
@@ -109,5 +108,4 @@ class DiceBot
 　3d6/2 ： ダイス出目を割り算（切り捨て）。切り上げは /2U、四捨五入は /2R。
 　D66 ： D66ダイス。順序はゲームに依存。D66N：そのまま、D66S：昇順。
 INFO_MESSAGE_TEXT
-  end
 end
