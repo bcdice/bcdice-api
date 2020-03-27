@@ -40,12 +40,25 @@ helpers do
     end
 
     dices = bcdice.getRandResults.map {|dice| {faces: dice[1], value: dice[0]}}
+    detailed_rands = bcdice.detailed_rand_results.map do |dice|
+      dice = dice.to_h
+      dice[:faces] = dice[:sides]
+      dice.delete(:faces)
+
+      dice
+    end
 
     if result.nil?
       raise CommandError
     end
 
-    return result, secret, dices
+    {
+      ok: true,
+      result: result,
+      secret: secret,
+      dices: dices,
+      detailed_rands: detailed_rands,
+    }
   end
 end
 
@@ -83,9 +96,7 @@ get "/v1/systeminfo" do
 end
 
 get "/v1/diceroll" do
-  result, secret, dices = diceroll(params[:system], params[:command])
-
-  jsonp ok: true, result: result, secret: secret, dices: dices
+  jsonp diceroll(params[:system], params[:command])
 end
 
 not_found do

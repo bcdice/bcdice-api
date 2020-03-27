@@ -83,6 +83,16 @@ class API_Test < Test::Unit::TestCase
     assert_false json["secret"]
   end
 
+  def test_detailed
+    get "/v1/diceroll?system=Cthulhu7th&command=CC1"
+
+    json = JSON.parse(last_response.body)
+
+    assert last_response.ok?
+    assert json["ok"]
+    assert_not_empty json["detailed_rands"].select{ |r| r["kind"] == "tens_d10" }
+  end
+
   data("単純な四則演算", "C(1+2-3*4/5)")
   data("括弧を含む四則演算", "C(1+(2-3*4/(5/6))-7)")
   data("計算コマンドの後に文字列が存在する場合（空白あり）", "C(10+5) mokekeke")
