@@ -29,6 +29,9 @@ WebAPIのバージョンと、提供するBCDiceのバージョンが返却さ�
 
 WebAPIを提供する管理者の名前と連絡先が返却されます。
 
+これらの設定はサーバー管理者の意図で設定されない場合があります。
+設定されていない場合、各項はから空文字列 `""` となります。
+
 ### URL
 
 `/v1/admin`
@@ -46,6 +49,30 @@ WebAPIを提供する管理者の名前と連絡先が返却されます。
   "email": "your@email.address"
 }
 ```
+
+### 内容
+
+| Key   | Description |
+| :---- | :---------- |
+| `name`  | 管理者の名前 |
+| `url`   | 利用規約等が書かれたページのURL |
+| `email` | 連絡先メールアドレス |
+
+### 設定方法
+
+設定方法は２種類あります。優先度は 環境変数 > 設定ファイル です。
+
+#### 1. 設定ファイル
+
+`config/admin.yaml` を設置します。内容は `config/admin.yaml.example` を参考にしてください。
+
+#### 2. 環境変数
+
+| ENV                      | JSON key |
+| :----------------------- | :------- |
+| `BCDICE_API_ADMIN_NAME`  | `name`   |
+| `BCDICE_API_ADMIN_URL`   | `url`    |
+| `BCDICE_API_ADMIN_EMAIL` | `email`  |
 
 
 ## systems
