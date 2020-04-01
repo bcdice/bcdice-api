@@ -4,9 +4,8 @@ require "diceBot/DiceBot"
 require "diceBot/DiceBotLoader"
 
 class BCDice
-  DICEBOTS = (DiceBotLoader.collectDiceBots + [DiceBot.new]).
+  DICEBOTS = ([DiceBot.new] + DiceBotLoader.collectDiceBots).
     map { |diceBot| [diceBot.id, diceBot] }.
-    sort.
     to_h.
     freeze
 
