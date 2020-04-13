@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 require "rake/testtask"
+require 'rubocop/rake_task'
 
 desc "Run test-unit based test"
 Rake::TestTask.new do |t|
@@ -9,3 +10,5 @@ Rake::TestTask.new do |t|
   t.test_files = Dir["test/test_*.rb"]
   t.verbose = true
 end
+
+RuboCop::RakeTask.new
