@@ -5,19 +5,6 @@ require 'diceBot/DiceBot'
 require 'diceBot/DiceBotLoader'
 
 class BCDice
-  DICEBOTS = ([DiceBot.new] + DiceBotLoader.collectDiceBots)
-             .map { |dicebot| [dicebot.id, dicebot.class] }
-             .to_h
-             .freeze
-
-  SYSTEMS = DICEBOTS.keys
-                    .sort
-                    .freeze
-
-  NAMES = DICEBOTS
-          .map { |_, dicebot| { system: dicebot::ID, name: dicebot::NAME } }
-          .freeze
-
   # 与えられた文字列が計算コマンドのようであるかを返す
   # @param [String] s 調べる文字列
   # @return [true] sが計算コマンドのようであった場合

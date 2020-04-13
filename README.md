@@ -58,6 +58,11 @@ Method                           | Description
 [/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得
 [/v1/diceroll](/docs/api.md#diceroll) | ダイスボットのコマンドを実行
 
+## Plugin
+
+`plugins/` ディレクトリにダイスボットのコードを入れておくと、サーバー起動時にロードし、使うことができます。
+既存のダイスボットを上書きすることもできます。
+
 ## Documents
 
 - [無料で独自ダイスボット入りのBCDice-APIサーバーを立てる](docs/heroku.md) (中級者向け)

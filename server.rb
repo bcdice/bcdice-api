@@ -10,6 +10,7 @@ require 'sinatra/reloader' if development?
 require 'bcdice_wrap'
 require 'load_admin_info'
 require 'exception'
+require 'bcdice_api'
 
 module BCDiceAPI
   VERSION = '0.9.0'
@@ -21,7 +22,7 @@ end
 
 helpers do
   def diceroll(system, command)
-    dicebot = BCDice::DICEBOTS[system]
+    dicebot = BCDiceAPI::DICEBOTS[system]
     raise UnsupportedDicebot if dicebot.nil?
     raise CommandError if command.nil? || command.empty?
 
@@ -72,15 +73,15 @@ get '/v1/admin' do
 end
 
 get '/v1/systems' do
-  jsonp systems: BCDice::SYSTEMS
+  jsonp systems: BCDiceAPI::SYSTEMS
 end
 
 get '/v1/names' do
-  jsonp names: BCDice::NAMES
+  jsonp names: BCDiceAPI::NAMES
 end
 
 get '/v1/systeminfo' do
-  dicebot = BCDice::DICEBOTS[params[:system]]
+  dicebot = BCDiceAPI::DICEBOTS[params[:system]]
   raise UnsupportedDicebot if dicebot.nil?
 
   jsonp ok: true, systeminfo: dicebot.new.info
