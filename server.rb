@@ -29,7 +29,7 @@ helpers do
     end
 
     bcdice = BCDiceMaker.new.newBcDice
-    bcdice.setDiceBot(dicebot)
+    bcdice.setDiceBot(dicebot.new)
     bcdice.setMessage(command)
     bcdice.setCollectRandResult(true)
 
@@ -92,7 +92,7 @@ get "/v1/systeminfo" do
     raise UnsupportedDicebot
   end
 
-  jsonp ok: true, systeminfo: dicebot.info
+  jsonp ok: true, systeminfo: dicebot.new.info
 end
 
 get "/v1/diceroll" do

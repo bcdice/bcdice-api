@@ -5,7 +5,7 @@ require "diceBot/DiceBotLoader"
 
 class BCDice
   DICEBOTS = ([DiceBot.new] + DiceBotLoader.collectDiceBots).
-    map { |diceBot| [diceBot.id, diceBot] }.
+    map { |diceBot| [diceBot.id, diceBot.class] }.
     to_h.
     freeze
 
@@ -14,7 +14,7 @@ class BCDice
     freeze
 
   NAMES = DICEBOTS.
-    map { |gameType, diceBot| {system: diceBot.id, name: diceBot.name} }.
+    map { |gameType, diceBot| {system: diceBot::ID, name: diceBot::NAME} }.
     freeze
 
   # 与えられた文字列が計算コマンドのようであるかを返す
