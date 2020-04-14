@@ -8,13 +8,8 @@ require 'sinatra'
 require 'sinatra/jsonp'
 require 'sinatra/reloader' if development?
 require 'bcdice_wrap'
-require 'load_admin_info'
 require 'exception'
 require 'bcdice_api'
-
-module BCDiceAPI
-  VERSION = '0.9.0'
-end
 
 configure :production do
   set :dump_errors, false
