@@ -21,6 +21,9 @@ Lint/StructNewOverride:
 Style/AsciiComments:
   Enabled: false
 
+Style/Documentation:
+  Enabled: false
+
 Style/HashEachMethods:
   Enabled: true
 
