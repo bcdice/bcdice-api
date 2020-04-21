@@ -13,3 +13,7 @@ Rake::TestTask.new do |t|
 end
 
 RuboCop::RakeTask.new
+
+Rake::Task[:test].enhance do
+  Rake::Task[:rubocop].invoke
+end

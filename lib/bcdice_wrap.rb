@@ -16,7 +16,8 @@ class BCDice
     str.match?(%r{\AC\([-+*/()\d]+\)}i)
   end
 
-  def dice_command # ダイスコマンドの分岐処理
+  # ダイスコマンドの分岐処理
+  def dice_command
     arg = @message.upcase
 
     debug('dice_command arg', arg)

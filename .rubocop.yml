@@ -4,6 +4,11 @@ AllCops:
     - "config/**/*"
     - "vendor/**/*"
 
+Metrics:
+  Exclude:
+    - "lib/bcdice_wrap.rb"
+    - "server.rb"
+
 Metrics/ClassLength:
   Exclude:
     - "test/**/*"
@@ -11,6 +16,12 @@ Metrics/ClassLength:
 Metrics/AbcSize:
   Exclude:
     - "test/**/*"
+    - "lib/bcdice_wrap.rb"
+    - "server.rb"
+
+Metrics/BlockLength:
+  Exclude:
+    - "server.rb"
 
 Lint/RaiseException:
   Enabled: true
@@ -33,5 +44,5 @@ Style/HashTransformKeys:
 Style/HashTransformValues:
   Enabled: true
 
-Style/LineLength:
+Layout/LineLength:
   Max: 100
