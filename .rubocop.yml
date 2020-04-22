@@ -7,7 +7,7 @@ AllCops:
 Metrics:
   Exclude:
     - "lib/bcdice_wrap.rb"
-    - "server.rb"
+    - "lib/bcdice_api/app.rb"
 
 Metrics/ClassLength:
   Exclude:
@@ -17,11 +17,12 @@ Metrics/AbcSize:
   Exclude:
     - "test/**/*"
     - "lib/bcdice_wrap.rb"
-    - "server.rb"
+    - "lib/bcdice_api/app.rb"
 
 Metrics/BlockLength:
   Exclude:
-    - "server.rb"
+    - "test/**/*"
+    - "lib/bcdice_api/app.rb"
 
 Lint/RaiseException:
   Enabled: true

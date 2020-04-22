@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'diceBot/DiceBotLoader'
+
 module BCDiceAPI
   class << self
     private

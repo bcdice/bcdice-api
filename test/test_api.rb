@@ -6,13 +6,13 @@ require 'rack/test'
 
 require 'cgi'
 
-require File.expand_path '../server.rb', __dir__
+require 'bcdice_api'
 
 class APITest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
-    Sinatra::Application
+    BCDiceAPI::App
   end
 
   def test_ping
