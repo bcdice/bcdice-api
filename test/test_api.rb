@@ -46,6 +46,7 @@ class APITest < Test::Unit::TestCase
     assert_false json['names'].empty?
     dad = json['names'].find { |dicebot| dicebot['system'] == 'DungeonsAndDragons' }
     assert_equal dad['name'], 'ダンジョンズ＆ドラゴンズ'
+    assert_equal dad['sort_key'], 'たんしよんすあんととらこんす'
   end
 
   def test_systeminfo
@@ -58,6 +59,7 @@ class APITest < Test::Unit::TestCase
     assert_false json['systeminfo']['name'].empty?
     assert       json['systeminfo']['prefixs']
     assert_false json['systeminfo']['info'].empty?
+    assert_false json['systeminfo']['sortKey'].empty?
   end
 
   def test_diceroll

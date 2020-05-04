@@ -124,16 +124,16 @@ WebAPIで利用できるダイスボットのシステムID一覧が返却され
 ```json
 {
   "names": [
-    {"system": "Alshard", "name": "アルシャード"},
-    {"system": "Cthulhu", "name": "クトゥルフ"},
-    {"system": "DiceBot", "name": "DiceBot"},
-    {"system": "DoubleCross", "name": "ダブルクロス2nd,3rd"},
-    {"system": "DungeonsAndDoragons", "name": "ダンジョンズ＆ドラゴンズ"},
-    {"system": "Gorilla", "name": "ゴリラTRPG"},
-    {"system": "Gundog", "name": "ガンドッグ"},
-    {"system": "LogHorizon", "name": "ログ・ホライズン"},
-    {"system": "Nechronica", "name": "ネクロニカ"},
-    {"system": "SwordWorld2.0", "name": "ソードワールド2.0"}
+    {"system": "Alshard", "name": "アルシャード", "sort_key": "あるしやあと"},
+    {"system": "Cthulhu", "name": "クトゥルフ", "sort_key": "くとうるふ"},
+    {"system": "DiceBot", "name": "DiceBot", "sort_key": "*たいすほつと"},
+    {"system": "DoubleCross", "name": "ダブルクロス2nd,3rd", "sort_key": "たふるくろす2"},
+    {"system": "DungeonsAndDragons", "name": "ダンジョンズ＆ドラゴンズ", "sort_key": "たんしよんすあんととらこんす"},
+    {"system": "Gorilla", "name": "ゴリラTRPG", "sort_key": "こりらTRPG"},
+    {"system": "Gundog", "name": "ガンドッグ", "sort_key": "かんとつく"},
+    {"system": "LogHorizon", "name": "ログ・ホライズン", "sort_key": "ろくほらいすん"},
+    {"system": "Nechronica", "name": "ネクロニカ", "sort_key": "ねくろにか"},
+    {"system": "SwordWorld2.0", "name": "ソードワールド2.0", "sort_key": "そおとわあると2.0"}
   ]
 }
 ```
@@ -162,6 +162,7 @@ WebAPIで利用できるダイスボットのシステムID一覧が返却され
   "systeminfo":{
     "name":"ゴリラTRPG",
     "gameType":"Gorilla",
+    "sortKey":"こりらTRPG",
     "prefixs":["G.*"],
     "info":"2D6ロール時のゴリティカル自動判定を行います。\n\nG = 2D6のショートカット\n\n例) G>=7 : 2D6して7以上なら成功\n"
   }

@@ -36,6 +36,7 @@ module BCDiceAPI
                     .sort
                     .freeze
 
-  NAMES = DICEBOTS.map { |id, dicebot| { system: id, name: dicebot::NAME } }
-                  .freeze
+  NAMES = DICEBOTS.map do |id, dicebot|
+    { system: id, name: dicebot::NAME, sort_key: dicebot::SORT_KEY }
+  end.freeze
 end
