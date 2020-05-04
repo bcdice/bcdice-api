@@ -1,3 +1,11 @@
+## 0.10.0
+
+- `/v1/names` の出力順にソートキーを使う
+- `/v1/names` の出力に `sort_key` を追加
+- ダイスボットを注入できるpluginシステムを追加 ([Document](/README.md#plugin))
+- BCDice Ver2.05.00 にアップデート
+
+
 ## 0.9.0
 
 - `/v1/admin` を追加 ([Document](/docs/api.md#admin)) (#17) (thanks @koi-chan)
