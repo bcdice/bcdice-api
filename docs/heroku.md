@@ -6,7 +6,6 @@
 ## 対象読者
 - コマンドラインが使える
 - Gitを使ったことがある/使えるようになる
-- GitHubのアカウントを持っている/作れる
 - 英語のWebサイトで怯まない
 
 
@@ -14,12 +13,8 @@
 
 - Herokuのアカウント登録
   - Heroku CLIでの認証
-- BCDiceに独自ダイスボットを追加
-  - BCDiceをfork
-  - 独自ダイスボットを記述したコードの追加
-  - commit / push
 - BCDice-APIの修正
-  - submoduleの変更
+  - 独自ダイスボットを記述したコードの追加
   - commit
 - Herokuにデプロイ
 
@@ -49,11 +44,9 @@ Herokuでは動作させるアプリケーションをGitで管理・送信す�
 ## 1. 各種アカウントの作成
 
 Herokuにアプリケーションを設置するにはアカウントが必要です。
-また、今回の方法ではGitHubのアカウントも必要となります。
 下記リンクからアカウント登録を行ってください。
 
 - [Heroku | 新規登録](https://signup.heroku.com/jp)
-- [Join GitHub](https://github.com/join)
 
 
 ## 2. ツールのインストール
@@ -73,48 +66,10 @@ Heroku CLIをインストールしたら、ログインを行います。
 heroku login
 ```
 
+## 4. BCDice-APIにダイスボットを注入
 
-## 4. BCDiceに独自ダイスボットを追加
-
-BCDice-APIではgit submoduleというGitの機能を用いて、GitHub上にあるBCDiceのリポジトリを参照しています。
-BCDice-APIに独自ダイスボットを追加するには、独自ダイスボットを追加したBCDiceのリポジトリをGitHub上に作成する必要があります。
-
-
-### 4.1 Fork
-
-ダイスボットを追加する為にBCDiceの複製をGitHub上に作成します。
-
-1. GitHubにログイン
-1. [torgtaitai/BCDice](https://github.com/torgtaitai/BCDice) にブラウザからアクセス
-1. 右上の `Fork` ボタンを押す
-1. しばらく待つとオリジナルから複製したリポジトリが作成されている
-
-ここで作成されたリポジトリのURLを控えておいてください。あなたのGitHub IDが `[your_id]` だとすると、URLは `https://github.com/[your_id]/BCDice` となるはずです。
-
-
-### 4.2 独自ダイスボットの追加
-
-複製が作成できたので、実際にダイスボットを追加します。
-
-1. リポジトリからコードをDLする（cloneする）
-```
-git clone https://github.com/[your_id]/BCDice
-```
-2. ダイスボットを追加する
-  参考：[ダイスボットのつくりかた](http://www.dodontof.com/DodontoF/src_bcdice/test/README.html)
-3. 変更をGitHub上に反映させる為に commit / pushする
-```
-git add .
-git commit
-git push origin master
-```
-
-ここまでで独自ダイスボットを追加したBCDiceがGitHub上に生成できました。
-メモしておいた `https://github.com/[your_id]/BCDice` にアクセスしてみて、コードが追加されているか確認してみてください。
-
-## 5. BCDice-APIの修正
-
-BCDice-APIではオリジナルのBCDiceを参照しています。今回は独自ダイスボットを追加したBCDiceを参照したいので、参照先を変更する必要があります。
+BCDice-APIでは `plugins/` にコードをいれておくと、読み込むようになっています。
+BCDiceにないゲームシステムに対応するには、この機能を活用します。
 
 まず、BCDice-APIをcloneします。
 
@@ -122,38 +77,18 @@ BCDice-APIではオリジナルのBCDiceを参照しています。今回は独�
 git clone https://github.com/ysakasin/bcdice-api
 ```
 
-Cloneしたファイルの中にある `.gitmodule` を編集します。デフォルトでは以下のようになっていますが、
+Cloneしたファイルの中にある `plugins/` ディレクトリにダイスボットのコードをいれておきます。
+そして、下記コマンドで変更を確定(commit)させます。
 
 ```
-[submodule "bcdice"]
-	path = bcdice
-	url = https://github.com/torgtaitai/BCDice
-```
-
-このURLを以下のように、4.1でメモしたURLに変更します。
-
-```
-[submodule "bcdice"]
-	path = bcdice
-	url = https://github.com/[your_id]/BCDice
-```
-
-そして、追加したダイスボットの読み込みを下記のようにして行います。
-
-```
-git submodule init
-git submodule update
-cd bcdice
-git pull origin master
-cd ../
-git add .
+git add plugins/
 git commit
 ```
 
 ここまでで独自ダイスボットを内臓したBCDice-APIを手元に構築できました。
 
 
-## 6. Herokuへのデプロイ
+## 5. Herokuへのデプロイ
 
 `bcdice-api` のディレクトリにいる状態で、以下のコマンドでHeroku上に場所を確保します。この時、 `https://thawing-inlet-61413.herokuapp.com/` のように、このアプリのURLが表示されるのでメモしておきましょう。
 
