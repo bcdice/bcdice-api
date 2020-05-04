@@ -44,7 +44,7 @@ class APITest < Test::Unit::TestCase
 
     assert       last_response.ok?
     assert_false json['names'].empty?
-    dad = json['names'].find { |dicebot| dicebot['system'] == 'DungeonsAndDoragons' }
+    dad = json['names'].find { |dicebot| dicebot['system'] == 'DungeonsAndDragons' }
     assert_equal dad['name'], 'ダンジョンズ＆ドラゴンズ'
   end
 

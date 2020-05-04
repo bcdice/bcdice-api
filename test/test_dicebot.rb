@@ -46,7 +46,7 @@ class DicebotTest < Test::Unit::TestCase
 
     files.each do |filename|
       class_name = File.basename(filename, '.txt')
-      next if class_name[0] == '_' || class_name == 'ArsMagica'
+      next if class_name[0] == '_'
 
       dicebot = begin
                   Object.const_get(class_name)
