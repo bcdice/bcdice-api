@@ -22,7 +22,7 @@ module BCDiceAPI
 
     # @return [Hash]
     def load_from_yaml
-      path = File.expand_path('../config/admin.yaml', __dir__)
+      path = File.expand_path('../../config/admin.yaml', __dir__)
       return {} unless File.exist?(path)
 
       yaml = YAML.load_file(path)
