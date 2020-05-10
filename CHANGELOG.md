@@ -1,3 +1,8 @@
+## 0.10.1
+
+- admin.yaml を読み込まない問題を修正 (#20) (thanks @ochaochaocha3)
+
+
 ## 0.10.0
 
 - `/v1/names` の出力順にソートキーを使う
