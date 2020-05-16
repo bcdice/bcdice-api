@@ -1,3 +1,8 @@
+## 0.10.2
+
+- BCDice Ver2.06.00 にアップデート
+
+
 ## 0.10.1
 
 - admin.yaml を読み込まない問題を修正 (#20) (thanks @ochaochaocha3)
