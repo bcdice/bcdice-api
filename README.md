@@ -2,7 +2,7 @@
 
 BCDiceを提供するWebAPIサーバー
 
-[![Build Status](https://travis-ci.org/ysakasin/bcdice-api.svg?branch=master)](https://travis-ci.org/ysakasin/bcdice-api)
+[![Action Status](https://github.com/bcdice/bcdice-api/workflows/.github/workflows/test.yml/badge.svg)](https://github.com/bcdice/bcdice-api/actions)
 
 ## Demo
 
