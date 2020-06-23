@@ -2,7 +2,7 @@
 
 BCDiceを提供するWebAPIサーバー
 
-[![Action Status](https://github.com/bcdice/bcdice-api/workflows/.github/workflows/test.yml/badge.svg)](https://github.com/bcdice/bcdice-api/actions)
+[![Action Status](https://github.com/bcdice/bcdice-api/workflows/Test/badge.svg)](https://github.com/bcdice/bcdice-api/actions)
 
 ## Demo
 
