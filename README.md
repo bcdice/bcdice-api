@@ -18,7 +18,7 @@ BCDiceは[どどんとふ](http://www.dodontof.com)をはじめとして、[TRPG
 ## Setup
 
 ```
-$ git clone https://github.com/ysakasin/bcdice-api.git
+$ git clone https://github.com/bcdice/bcdice-api.git
 $ cd bcdice-api
 $ git checkout `git describe --abbrev=0` #直近のリリースに移動
 $ git submodule init
