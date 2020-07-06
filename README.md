@@ -6,7 +6,15 @@ BCDiceを提供するWebAPIサーバー
 
 ## Demo
 
+下記URLは開発検証用のURLです、予告なしに挙動が変更されたり、可動していない場合があるので使用しないでください。
+
 https://bcdice.herokuapp.com
+
+## Public servers
+
+有志によって運営されている公開サーバーの一覧
+
+https://api-status.bcdice.org/
 
 ## What is BCDice
 
