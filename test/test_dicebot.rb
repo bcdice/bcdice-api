@@ -48,6 +48,8 @@ class DicebotTest < Test::Unit::TestCase
       class_name = File.basename(filename, '.txt')
       next if class_name[0] == '_'
 
+      class_name = 'DiceBot' if ['UpperDice'].include?(class_name)
+
       dicebot = begin
                   Object.const_get(class_name)
                 rescue StandardError
