@@ -1,3 +1,9 @@
+## 1.0.0
+
+- BCDice Ver2.07.01 にアップデート
+- セキュリティアップデート : Puma, Rake
+- Dockerfile同梱
+
 ## 0.10.2
 
 - BCDice Ver2.06.00 にアップデート
