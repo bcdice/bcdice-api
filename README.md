@@ -3,6 +3,7 @@
 BCDiceを提供するWebAPIサーバー
 
 [![Action Status](https://github.com/bcdice/bcdice-api/workflows/Test/badge.svg?branch=master)](https://github.com/bcdice/bcdice-api/actions)
+[![Docker repository](https://img.shields.io/docker/pulls/bcdice/bcdice-api?logo=docker&logoColor=fff)](https://hub.docker.com/r/bcdice/bcdice-api)
 
 ## Demo
 
