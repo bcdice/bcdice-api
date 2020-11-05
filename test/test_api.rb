@@ -58,6 +58,8 @@ class APITest < Test::Unit::TestCase
     assert_equal json['systeminfo']['gameType'], 'DiceBot'
     assert_false json['systeminfo']['name'].empty?
     assert       json['systeminfo']['prefixs']
+
+    pend 'DiceBot::HELP_MESSAGE will be supported in BCDice v3'
     assert_false json['systeminfo']['info'].empty?
     assert_false json['systeminfo']['sortKey'].empty?
   end
@@ -99,6 +101,8 @@ class APITest < Test::Unit::TestCase
   data('単純な四則演算', 'C(1+2-3*4/5)')
   data('括弧を含む四則演算', 'C(1+(2-3*4/(5/6))-7)')
   data('計算コマンドの後に文字列が存在する場合（空白あり）', 'C(10+5) mokekeke')
+  data('Cの後に数字のみが続く場合', 'C42')
+  data('空白で始まる場合', ' C(1+2)')
   def test_calc(command)
     get "/v1/diceroll?system=DiceBot&command=#{CGI.escape(command)}"
 
@@ -111,9 +115,7 @@ class APITest < Test::Unit::TestCase
     assert_false json['secret']
   end
 
-  data('Cの後に数字のみが続く場合', 'C42')
   data('括弧が閉じられていない場合', 'C(1+2')
-  data('空白で始まる場合', ' C(1+2)')
   data('計算コマンドの後に文字列が存在する場合（空白なし）', 'C(10+5)mokekeke')
   def test_pseudo_calc(command)
     get "/v1/diceroll?system=DiceBot&command=#{CGI.escape(command)}"

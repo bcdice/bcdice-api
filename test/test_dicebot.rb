@@ -3,10 +3,7 @@
 ENV['RACK_ENV'] = 'test'
 require 'test/unit'
 require 'rack/test'
-
-require 'cgi'
-
-require 'test/DiceBotTestData'
+require 'tomlrb'
 
 require 'bcdice_api'
 
@@ -17,76 +14,45 @@ class DicebotTest < Test::Unit::TestCase
     BCDiceAPI::App
   end
 
-  class << self
-    def format_expected(expected)
-      expected = expected.sub('###secret dice###', '')
-      part = expected.partition(':')
-
-      if expected.empty? || expected.start_with?('ダイス残り：')
-        nil
-      elsif part[2].empty?
-        expected
-      else
-        part[1] + part[2]
-      end
-    end
-
-    def expected_secret(expected)
-      if expected.empty? || expected.start_with?('ダイス残り：')
-        nil
-      else
-        expected.end_with?('###secret dice###')
-      end
-    end
-  end
-
   data do
     data_set = {}
-    files = Dir.glob('bcdice/src/test/data/*.txt')
+    files = Dir.glob('bcdice/test/data/*.toml')
+
+    class_name_to_id = BCDice.all_game_systems.map do |k|
+      name = k.name.split('::').last
+      [name, k::ID]
+    end.to_h
 
     files.each do |filename|
-      class_name = File.basename(filename, '.txt')
-      next if class_name[0] == '_'
+      filename_base = File.basename(filename, '.toml')
+      data = Tomlrb.load_file(filename, symbolize_keys: true)
 
-      class_name = 'DiceBot' if ['UpperDice'].include?(class_name)
+      data[:test].each.with_index(1) do |test_case, index|
+        test_case[:filename] = filename
+        test_case[:game_system] = class_name_to_id[test_case[:game_system]]
+        test_case[:output] = ": #{test_case[:output]}" unless test_case[:output].empty?
+        test_case[:output] = nil if test_case[:output].empty? # TOMLではnilを表現できないので空文字で代用
+        test_case[:secret] ||= false
+        test_case[:success] ||= false
+        test_case[:failure] ||= false
+        test_case[:critical] ||= false
+        test_case[:fumble] ||= false
 
-      dicebot = begin
-                  Object.const_get(class_name)
-                rescue StandardError
-                  DiceBot
-                end
+        key = [filename_base, index, test_case[:input]].join(':')
 
-      sources = File.read(filename)
-                    .gsub("\r\n", "\n")
-                    .tr("\r", "\n")
-                    .split("============================\n")
-                    .map(&:chomp)
-
-      sources.map.with_index(1) do |source, i|
-        data = DiceBotTestData.parse(source, dicebot::ID, i)
-        key = [class_name, data.index, data.input].join(':')
-
-        next if data.input.join("\n").upcase.include?('OPEN DICE!')
-
-        data_set[key] = {
-          system: dicebot::ID,
-          command: data.input.join("\n"),
-          expected: DicebotTest.format_expected(data.output),
-          secret: expected_secret(data.output),
-          rands: data.rands
-        }
+        data_set[key] = test_case
       end
     end
 
     data_set
   end
   def test_diceroll(data)
-    BCDiceAPI::App.test_rands = data[:rands]
+    BCDiceAPI::App.test_rands = data[:rands].map { |r| [r[:value], r[:sides]] }
 
-    get '/v1/diceroll', system: data[:system], command: data[:command]
+    get '/v1/diceroll', system: data[:game_system], command: data[:input]
 
     json = JSON.parse(last_response.body)
-    assert_equal data[:expected], json['result']
-    assert_equal data[:secret], json['secret']
+    assert_equal data[:output], json['result']
+    assert_equal data[:secret], json['secret'] if data[:output]
   end
 end

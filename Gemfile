@@ -2,6 +2,8 @@
 
 source 'https://rubygems.org'
 
+gem 'bcdice', '3.0.0.pre.alpha.1'
+
 gem 'sinatra', '~>2.0'
 gem 'sinatra-contrib', '~>2.0'
 gem 'sinatra-jsonp', '~>0.5.0'
@@ -13,4 +15,5 @@ group :development, :test do
   gem 'rake', '~>13.0'
   gem 'rubocop', '~> 0.81.0', require: false
   gem 'test-unit', '~>3.3'
+  gem 'tomlrb'
 end

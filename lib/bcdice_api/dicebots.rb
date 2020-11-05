@@ -1,21 +1,11 @@
 # frozen_string_literal: true
 
-require 'diceBot/DiceBotLoader'
+require 'bcdice'
+require 'bcdice/game_system'
 
 module BCDiceAPI
   class << self
     private
-
-    # @return [Array<Class>] ダイスボット一覧
-    def load_dicebots
-      list = DiceBotLoader.collectDiceBots.map(&:class)
-      list.concat load_plugins
-      list.push DiceBot
-
-      list.uniq!
-
-      list.sort_by { |dicebot| dicebot::SORT_KEY }.map { |dicebot| [dicebot::ID, dicebot] }.to_h
-    end
 
     # @return [Array<Class>] 追加のダイスボット
     def load_plugins
@@ -30,7 +20,7 @@ module BCDiceAPI
     end
   end
 
-  DICEBOTS = load_dicebots.freeze
+  DICEBOTS = BCDice.all_game_systems.map { |klass| [klass::ID, klass] }.to_h
 
   SYSTEMS = DICEBOTS.keys
                     .sort

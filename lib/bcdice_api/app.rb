@@ -4,10 +4,7 @@ require 'sinatra'
 require 'sinatra/base'
 require 'sinatra/jsonp'
 require 'sinatra/reloader' if development?
-require 'bcdice_wrap'
 require 'exception'
-
-$SEND_STR_MAX = 99_999 # rubocop:disable Style/GlobalVars
 
 module BCDiceAPI
   class App < Sinatra::Application
@@ -27,38 +24,24 @@ module BCDiceAPI
 
     helpers do
       def diceroll(system, command)
-        dicebot = BCDiceAPI::DICEBOTS[system]
-        raise UnsupportedDicebot if dicebot.nil?
+        dicebot_klass = BCDiceAPI::DICEBOTS[system]
+        raise UnsupportedDicebot if dicebot_klass.nil?
         raise CommandError if command.nil? || command.empty?
 
-        bcdice = BCDiceMaker.new.newBcDice
-        if App.test_rands
-          bcdice.setRandomValues(App.test_rands)
-          bcdice.setTest(true)
-        end
-        bcdice.setDiceBot(dicebot.new)
-        bcdice.setMessage(command)
-        bcdice.setCollectRandResult(true)
+        dicebot = dicebot_klass.new(command)
+        dicebot.randomizer = RandomizerMock.new(App.test_rands) if App.test_rands
 
-        result, secret = bcdice.dice_command
-
-        result, secret = bcdice.try_calc_command(command) if result.nil?
-
-        dices = bcdice.getRandResults.map { |dice| { faces: dice[1], value: dice[0] } }
-        detailed_rands = bcdice.detailed_rand_results.map do |dice|
-          dice = dice.to_h
-          dice[:faces] = dice[:sides]
-          dice.delete(:faces)
-
-          dice
-        end
+        result = dicebot.eval
 
         raise CommandError if result.nil?
 
+        dices = dicebot.randomizer.rand_results.map { |dice| { faces: dice[1], value: dice[0] } }
+        detailed_rands = dicebot.randomizer.detailed_rand_results.map(&:to_h)
+
         {
           ok: true,
-          result: result,
-          secret: secret,
+          result: ": #{result}",
+          secret: dicebot.secret?,
           dices: dices,
           detailed_rands: detailed_rands
         }
@@ -93,7 +76,15 @@ module BCDiceAPI
       dicebot = BCDiceAPI::DICEBOTS[params[:system]]
       raise UnsupportedDicebot if dicebot.nil?
 
-      jsonp ok: true, systeminfo: dicebot.new.info
+      systeminfo = {
+        'name' => dicebot::NAME,
+        'gameType' => dicebot::ID,
+        'sortKey' => dicebot::SORT_KEY,
+        'prefixs' => dicebot.prefixes_pattern,
+        'info' => dicebot::HELP_MESSAGE
+      }
+
+      jsonp ok: true, systeminfo: systeminfo
     end
 
     get '/v1/diceroll' do
