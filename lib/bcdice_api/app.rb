@@ -91,6 +91,25 @@ module BCDiceAPI
       jsonp diceroll(params[:system], params[:command])
     end
 
+    TEST_GAME_TYPE = "StellarKnights"
+
+    get "/tester" do
+      @command = params[:command]
+
+      dicebot = BCDiceAPI::DICEBOTS[TEST_GAME_TYPE]
+      @title = dicebot::NAME
+      @help = dicebot::HELP_MESSAGE
+
+      if @command
+        begin
+          @result = diceroll(TEST_GAME_TYPE, @command)
+        rescue CommandError
+          @result = "対応していないコマンド：#{@command}"
+        end
+      end
+      erb :tester
+    end
+
     not_found do
       jsonp ok: false, reason: 'not found'
     end
