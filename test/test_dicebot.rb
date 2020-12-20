@@ -18,18 +18,13 @@ class DicebotTest < Test::Unit::TestCase
     data_set = {}
     files = Dir.glob('bcdice/test/data/*.toml')
 
-    class_name_to_id = BCDice.all_game_systems.map do |k|
-      name = k.name.split('::').last
-      [name, k::ID]
-    end.to_h
-
     files.each do |filename|
       filename_base = File.basename(filename, '.toml')
       data = Tomlrb.load_file(filename, symbolize_keys: true)
 
       data[:test].each.with_index(1) do |test_case, index|
         test_case[:filename] = filename
-        test_case[:game_system] = class_name_to_id[test_case[:game_system]]
+        test_case[:game_system] = test_case[:game_system]
         test_case[:output] = ": #{test_case[:output]}" unless test_case[:output].empty?
         test_case[:output] = nil if test_case[:output].empty? # TOMLではnilを表現できないので空文字で代用
         test_case[:secret] ||= false

@@ -35,13 +35,13 @@ module BCDiceAPI
 
         raise CommandError if result.nil?
 
-        dices = dicebot.randomizer.rand_results.map { |dice| { faces: dice[1], value: dice[0] } }
-        detailed_rands = dicebot.randomizer.detailed_rand_results.map(&:to_h)
+        dices = result.rands.map { |dice| { faces: dice[1], value: dice[0] } }
+        detailed_rands = result.detailed_rands.map(&:to_h)
 
         {
           ok: true,
-          result: ": #{result}",
-          secret: dicebot.secret?,
+          result: ": #{result.text}",
+          secret: result.secret?,
           dices: dices,
           detailed_rands: detailed_rands
         }
