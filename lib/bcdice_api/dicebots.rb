@@ -20,7 +20,10 @@ module BCDiceAPI
     end
   end
 
-  DICEBOTS = BCDice.all_game_systems.map { |klass| [klass::ID, klass] }.to_h
+  DICEBOTS = BCDice.all_game_systems
+                   .sort_by { |klass| klass::SORT_KEY }
+                   .map { |klass| [klass::ID, klass] }
+                   .to_h
 
   SYSTEMS = DICEBOTS.keys
                     .sort
