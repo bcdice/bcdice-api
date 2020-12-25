@@ -80,7 +80,7 @@ module BCDiceAPI
         'name' => dicebot::NAME,
         'gameType' => dicebot::ID,
         'sortKey' => dicebot::SORT_KEY,
-        'prefixs' => dicebot.prefixes_pattern,
+        'prefixs' => dicebot.prefixes,
         'info' => dicebot::HELP_MESSAGE
       }
 

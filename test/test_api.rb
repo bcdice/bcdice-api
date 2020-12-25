@@ -57,7 +57,7 @@ class APITest < Test::Unit::TestCase
     assert json['systeminfo']
     assert_equal json['systeminfo']['gameType'], 'DiceBot'
     assert_false json['systeminfo']['name'].empty?
-    assert       json['systeminfo']['prefixs']
+    assert_instance_of Array, json['systeminfo']['prefixs']
 
     pend 'DiceBot::HELP_MESSAGE will be supported in BCDice v3'
     assert_false json['systeminfo']['info'].empty?
