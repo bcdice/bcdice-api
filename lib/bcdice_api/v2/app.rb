@@ -2,7 +2,7 @@
 
 require 'sinatra'
 require 'sinatra/base'
-require 'sinatra/jsonp'
+require 'sinatra/json'
 
 require 'sinatra/reloader' if development?
 
@@ -18,8 +18,6 @@ module BCDiceAPI
       before do
         response.headers['Access-Control-Allow-Origin'] = '*'
       end
-
-      helpers Sinatra::Jsonp
 
       helpers do
         def roll(id, command)
@@ -47,11 +45,11 @@ module BCDiceAPI
       end
 
       get '/v2/version' do
-        jsonp api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
+        json api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
       end
 
       get '/v2/admin' do
-        jsonp BCDiceAPI::ADMIN
+        json BCDiceAPI::ADMIN
       end
 
       get '/v2/game_system' do
@@ -59,7 +57,7 @@ module BCDiceAPI
           { id: game::ID, name: game::NAME, sort_key: game::SORT_KEY }
         end
 
-        jsonp game_system: game_system
+        json game_system: game_system
       end
 
       get '/v2/game_system/:id' do |id|
@@ -75,21 +73,21 @@ module BCDiceAPI
           help_message: game_system::HELP_MESSAGE
         }
 
-        jsonp ret
+        json ret
       end
 
       get '/v2/game_system/:id/roll' do |id|
-        jsonp roll(id, params[:command])
+        json roll(id, params[:command])
       end
 
       post '/v2/game_system/:id/roll' do |id|
-        jsonp roll(id, params[:command])
+        json roll(id, params[:command])
       end
 
       post '/v2/original_table' do
         table = BCDice::UserDefinedDiceTable.new(params[:table])
 
-        jsonp text: params[:table]
+        json text: params[:table]
 
         ret = {
           ok: true,
@@ -97,17 +95,17 @@ module BCDiceAPI
           rands: table.randomizer.detailed_rand_results.map(&:to_h)
         }
 
-        jsonp ret
+        json ret
       end
 
       error UnsupportedDicebot do
         status 400
-        jsonp ok: false, reason: 'unsupported game system'
+        json ok: false, reason: 'unsupported game system'
       end
 
       error CommandError do
         status 400
-        jsonp ok: false, reason: 'unsupported command'
+        json ok: false, reason: 'unsupported command'
       end
     end
   end
