@@ -6,6 +6,8 @@ require 'sinatra/jsonp'
 require 'sinatra/reloader' if development?
 require 'exception'
 
+require_relative 'v2/app'
+
 module BCDiceAPI
   class App < Sinatra::Application
     class << self
@@ -19,6 +21,8 @@ module BCDiceAPI
     configure :development do
       register Sinatra::Reloader
     end
+
+    use V2::App
 
     helpers Sinatra::Jsonp
 
@@ -46,10 +50,6 @@ module BCDiceAPI
           detailed_rands: detailed_rands
         }
       end
-    end
-
-    before do
-      response.headers['Access-Control-Allow-Origin'] = '*'
     end
 
     get '/' do

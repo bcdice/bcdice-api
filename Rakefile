@@ -12,6 +12,14 @@ Rake::TestTask.new do |t|
   t.verbose = true
 end
 
+namespace :test do
+  Rake::TestTask.new(:v2) do |t|
+    t.libs += ['lib']
+    t.test_files = ['test/test_api_v2.rb', 'test/test_dicebot_v2.rb']
+    t.verbose = true
+  end
+end
+
 RuboCop::RakeTask.new
 
 Rake::Task[:test].enhance do
