@@ -86,16 +86,9 @@ module BCDiceAPI
 
       post '/v2/original_table' do
         table = BCDice::UserDefinedDiceTable.new(params[:table])
+        result = table.roll
 
-        json text: params[:table]
-
-        ret = {
-          ok: true,
-          text: table.roll,
-          rands: table.randomizer.detailed_rand_results.map(&:to_h)
-        }
-
-        json ret
+        json ok: true, text: result.text, rands: result.detailed_rands.map(&:to_h)
       end
 
       error UnsupportedDicebot do
