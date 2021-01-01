@@ -12,7 +12,7 @@ class APITest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
-    BCDiceAPI::App
+    BCDiceAPI::APP
   end
 
   def test_ping

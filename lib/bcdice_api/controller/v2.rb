@@ -1,24 +1,11 @@
 # frozen_string_literal: true
 
-require 'sinatra'
-require 'sinatra/base'
-require 'sinatra/json'
-
-require 'sinatra/reloader' if development?
-
 require 'bcdice/user_defined_dice_table'
+require_relative '../base'
 
 module BCDiceAPI
-  module V2
-    class App < Sinatra::Base
-      class << self
-        attr_accessor :test_rands
-      end
-
-      before do
-        response.headers['Access-Control-Allow-Origin'] = '*'
-      end
-
+  module Controller
+    class V2 < Base
       helpers do
         def roll(id, command)
           klass = BCDiceAPI::DICEBOTS[id]
@@ -26,7 +13,7 @@ module BCDiceAPI
           raise CommandError if command.nil? || command.empty?
 
           game_system = klass.new(command)
-          game_system.randomizer = RandomizerMock.new(App.test_rands) if App.test_rands
+          game_system.randomizer = RandomizerMock.new(V2.test_rands) if V2.test_rands
 
           result = game_system.eval
           raise CommandError if result.nil?
@@ -44,15 +31,15 @@ module BCDiceAPI
         end
       end
 
-      get '/v2/version' do
+      get '/version' do
         json api: BCDiceAPI::VERSION, bcdice: BCDice::VERSION
       end
 
-      get '/v2/admin' do
+      get '/admin' do
         json BCDiceAPI::ADMIN
       end
 
-      get '/v2/game_system' do
+      get '/game_system' do
         game_system = BCDice.all_game_systems.sort_by { |game| game::SORT_KEY } .map do |game|
           { id: game::ID, name: game::NAME, sort_key: game::SORT_KEY }
         end
@@ -60,7 +47,7 @@ module BCDiceAPI
         json game_system: game_system
       end
 
-      get '/v2/game_system/:id' do |id|
+      get '/game_system/:id' do |id|
         game_system = BCDice.game_system_class(id)
         raise UnsupportedDicebot if game_system.nil?
 
@@ -76,19 +63,23 @@ module BCDiceAPI
         json ret
       end
 
-      get '/v2/game_system/:id/roll' do |id|
+      get '/game_system/:id/roll' do |id|
         json roll(id, params[:command])
       end
 
-      post '/v2/game_system/:id/roll' do |id|
+      post '/game_system/:id/roll' do |id|
         json roll(id, params[:command])
       end
 
-      post '/v2/original_table' do
+      post '/original_table' do
         table = BCDice::UserDefinedDiceTable.new(params[:table])
         result = table.roll
 
         json ok: true, text: result.text, rands: result.detailed_rands.map(&:to_h)
+      end
+
+      not_found do
+        json ok: false, reason: 'not found'
       end
 
       error UnsupportedDicebot do
@@ -99,6 +90,10 @@ module BCDiceAPI
       error CommandError do
         status 400
         json ok: false, reason: 'unsupported command'
+      end
+
+      error do
+        json ok: false
       end
     end
   end

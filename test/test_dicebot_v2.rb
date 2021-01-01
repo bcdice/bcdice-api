@@ -11,7 +11,7 @@ class V2DicebotTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
-    BCDiceAPI::App
+    BCDiceAPI::APP
   end
 
   data do
@@ -40,7 +40,7 @@ class V2DicebotTest < Test::Unit::TestCase
     data_set
   end
   def test_diceroll(data)
-    BCDiceAPI::V2::App.test_rands = data[:rands].map { |r| [r[:value], r[:sides]] }
+    BCDiceAPI::Controller::V2.test_rands = data[:rands].map { |r| [r[:value], r[:sides]] }
 
     get "/v2/game_system/#{data[:game_system]}/roll", command: data[:input]
 

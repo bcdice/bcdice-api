@@ -8,8 +8,8 @@ Metrics:
   Exclude:
     - "test/**/*"
     - "lib/bcdice_wrap.rb"
-    - "lib/bcdice_api/app.rb"
-    - "lib/bcdice_api/v2/app.rb"
+    - "lib/bcdice_api/controller/v1.rb"
+    - "lib/bcdice_api/controller/v2.rb"
 
 Lint/RaiseException:
   Enabled: true
