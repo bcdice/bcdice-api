@@ -7,7 +7,6 @@ module BCDiceAPI
   class << self
     private
 
-    # @return [Array<Class>] 追加のダイスボット
     def load_plugins
       query = File.join(__dir__, '../../plugins', '*.rb')
 
@@ -15,10 +14,11 @@ module BCDiceAPI
         id = File.basename(plugin, '.rb')
 
         require "plugins/#{id}"
-        Object.const_get(id)
       end
     end
   end
+
+  load_plugins()
 
   DICEBOTS = BCDice.all_game_systems
                    .sort_by { |klass| klass::SORT_KEY }
