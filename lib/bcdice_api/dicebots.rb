@@ -18,7 +18,7 @@ module BCDiceAPI
     end
   end
 
-  load_plugins()
+  load_plugins
 
   DICEBOTS = BCDice.all_game_systems
                    .sort_by { |klass| klass::SORT_KEY }
