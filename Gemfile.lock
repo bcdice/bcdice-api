@@ -2,9 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.1)
-    bcdice (3.0.0.pre.rc.2)
+    bcdice (3.0.0)
       i18n (~> 1.8.5)
-    concurrent-ruby (1.1.7)
+    concurrent-ruby (1.1.8)
     i18n (1.8.7)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
@@ -60,7 +60,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bcdice (= 3.0.0.pre.rc.2)
+  bcdice (~> 3.0.0)
   puma (~> 4.3)
   rack-test (~> 1.1)
   rake (~> 13.0)
