@@ -1,26 +1,30 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    ast (2.4.0)
-    backports (3.16.1)
+    ast (2.4.1)
+    bcdice (3.0.0)
+      i18n (~> 1.8.5)
+    concurrent-ruby (1.1.8)
+    i18n (1.8.7)
+      concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.4)
-    multi_json (1.14.1)
+    multi_json (1.15.0)
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.5.2)
-    parallel (1.19.1)
-    parser (2.7.1.0)
-      ast (~> 2.4.0)
-    power_assert (1.1.6)
-    puma (4.3.5)
+    nio4r (2.5.4)
+    parallel (1.20.1)
+    parser (3.0.0.0)
+      ast (~> 2.4.1)
+    power_assert (1.2.0)
+    puma (4.3.7)
       nio4r (~> 2.0)
     rack (2.2.3)
-    rack-protection (2.0.8.1)
+    rack-protection (2.1.0)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rainbow (3.0.0)
-    rake (13.0.1)
+    rake (13.0.3)
     rexml (3.2.4)
     rubocop (0.81.0)
       jaro_winkler (~> 1.5.1)
@@ -30,32 +34,33 @@ GEM
       rexml
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
-    ruby-progressbar (1.10.1)
+    ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.2)
-    sinatra (2.0.8.1)
+    sinatra (2.1.0)
       mustermann (~> 1.0)
-      rack (~> 2.0)
-      rack-protection (= 2.0.8.1)
+      rack (~> 2.2)
+      rack-protection (= 2.1.0)
       tilt (~> 2.0)
-    sinatra-contrib (2.0.8.1)
-      backports (>= 2.8.2)
+    sinatra-contrib (2.1.0)
       multi_json
       mustermann (~> 1.0)
-      rack-protection (= 2.0.8.1)
-      sinatra (= 2.0.8.1)
+      rack-protection (= 2.1.0)
+      sinatra (= 2.1.0)
       tilt (~> 2.0)
     sinatra-jsonp (0.5.0)
       multi_json (~> 1.8)
       sinatra (>= 1.0)
-    test-unit (3.3.5)
+    test-unit (3.3.9)
       power_assert
     tilt (2.0.10)
+    tomlrb (2.0.1)
     unicode-display_width (1.7.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcdice (~> 3.0.0)
   puma (~> 4.3)
   rack-test (~> 1.1)
   rake (~> 13.0)
@@ -64,6 +69,7 @@ DEPENDENCIES
   sinatra-contrib (~> 2.0)
   sinatra-jsonp (~> 0.5.0)
   test-unit (~> 3.3)
+  tomlrb
 
 BUNDLED WITH
    2.1.4

@@ -12,7 +12,7 @@ class APITest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
-    BCDiceAPI::App
+    BCDiceAPI::APP
   end
 
   def test_ping
@@ -57,7 +57,8 @@ class APITest < Test::Unit::TestCase
     assert json['systeminfo']
     assert_equal json['systeminfo']['gameType'], 'DiceBot'
     assert_false json['systeminfo']['name'].empty?
-    assert       json['systeminfo']['prefixs']
+    assert_instance_of Array, json['systeminfo']['prefixs']
+
     assert_false json['systeminfo']['info'].empty?
     assert_false json['systeminfo']['sortKey'].empty?
   end
@@ -94,35 +95,6 @@ class APITest < Test::Unit::TestCase
     assert last_response.ok?
     assert json['ok']
     assert_not_empty(json['detailed_rands'].select { |r| r['kind'] == 'tens_d10' })
-  end
-
-  data('単純な四則演算', 'C(1+2-3*4/5)')
-  data('括弧を含む四則演算', 'C(1+(2-3*4/(5/6))-7)')
-  data('計算コマンドの後に文字列が存在する場合（空白あり）', 'C(10+5) mokekeke')
-  def test_calc(command)
-    get "/v1/diceroll?system=DiceBot&command=#{CGI.escape(command)}"
-
-    json = JSON.parse(last_response.body)
-
-    assert last_response.ok?
-    assert json['ok']
-    assert json['result'].start_with?(': 計算結果 ＞ ')
-    assert_equal json['dices'], []
-    assert_false json['secret']
-  end
-
-  data('Cの後に数字のみが続く場合', 'C42')
-  data('括弧が閉じられていない場合', 'C(1+2')
-  data('空白で始まる場合', ' C(1+2)')
-  data('計算コマンドの後に文字列が存在する場合（空白なし）', 'C(10+5)mokekeke')
-  def test_pseudo_calc(command)
-    get "/v1/diceroll?system=DiceBot&command=#{CGI.escape(command)}"
-
-    json = JSON.parse(last_response.body)
-
-    assert last_response.bad_request?
-    assert_false json['ok']
-    assert_equal json['reason'], 'unsupported command'
   end
 
   def test_unexpected_dicebot

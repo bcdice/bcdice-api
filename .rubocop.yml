@@ -6,23 +6,10 @@ AllCops:
 
 Metrics:
   Exclude:
-    - "lib/bcdice_wrap.rb"
-    - "lib/bcdice_api/app.rb"
-
-Metrics/ClassLength:
-  Exclude:
-    - "test/**/*"
-
-Metrics/AbcSize:
-  Exclude:
     - "test/**/*"
     - "lib/bcdice_wrap.rb"
-    - "lib/bcdice_api/app.rb"
-
-Metrics/BlockLength:
-  Exclude:
-    - "test/**/*"
-    - "lib/bcdice_api/app.rb"
+    - "lib/bcdice_api/controller/v1.rb"
+    - "lib/bcdice_api/controller/v2.rb"
 
 Lint/RaiseException:
   Enabled: true
