@@ -54,7 +54,6 @@ class V2APITest < Test::Unit::TestCase
     assert_false json['command_pattern'].empty?
     assert_false json['sort_key'].empty?
 
-    pend 'DiceBot::HELP_MESSAGE will be supported in BCDice v3'
     assert_false json['help_message'].empty?
   end
 

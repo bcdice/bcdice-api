@@ -59,7 +59,6 @@ class APITest < Test::Unit::TestCase
     assert_false json['systeminfo']['name'].empty?
     assert_instance_of Array, json['systeminfo']['prefixs']
 
-    pend 'DiceBot::HELP_MESSAGE will be supported in BCDice v3'
     assert_false json['systeminfo']['info'].empty?
     assert_false json['systeminfo']['sortKey'].empty?
   end
