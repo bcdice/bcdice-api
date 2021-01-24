@@ -58,14 +58,16 @@ $ APP_ENV=production bundle exec rackup -E deployment
 
 ## API
 
-Method                           | Description
--------------------------------- | -----
-[/v1/version](/docs/api.md#version)   | BCDiceとAPIサーバーのバージョン
-[/v1/admin](/docs/api.md#admin)       | APIサーバ提供者の名前と連絡先
-[/v1/systems](/docs/api.md#systems)   | ダイスボットのシステムID一覧
-[/v1/names](/docs/api.md#names)       | ダイスボットのシステムIDとシステム名前の一覧
-[/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得
-[/v1/diceroll](/docs/api.md#diceroll) | ダイスボットのコマンドを実行
+[`/v2`](https://github.com/bcdice/bcdice-api/blob/master/docs/api_v2.md)
+
+Method                    | Description
+------------------------- | -----
+/v2/version               | BCDiceとAPIサーバーのバージョン
+/v2/admin                 | APIサーバ提供者の名前と連絡先
+/v2/game_system           | ゲームシステムの一覧
+/v2/game_system/{id}      | ゲームシステムの情報
+/v2/game_system/{id}/roll | ダイスロール
+/v2/original_table        | オリジナル表の実行
 
 ## Plugin
 
