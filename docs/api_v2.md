@@ -243,15 +243,15 @@ BCDice-APIで利用できるゲームシステムの一覧が返却されます�
 
 - `nomal`
   - 通常のダイスロール
-  - `{"kind" : "nomal", "faces" : 10, "value" : 8}`
+  - `{"kind" : "nomal", "sides" : 10, "value" : 8}`
 - `tens_d10`
   - 十の位のダイス
-  - `{"kind" : "tens_d10", "faces" : 10, "value" : 80}`
-  - `{"kind" : "tens_d10", "faces" : 10, "value" : 0}`
+  - `{"kind" : "tens_d10", "sides" : 10, "value" : 80}`
+  - `{"kind" : "tens_d10", "sides" : 10, "value" : 0}`
     - `00` は0として扱われます
 - `d9`
   - 十面体を0〜9のダイスとして扱う
-  - `{"kind" : "d9", "faces" : 10, "value" : 0}`
+  - `{"kind" : "d9", "sides" : 10, "value" : 0}`
 
 ## Original Table
 
