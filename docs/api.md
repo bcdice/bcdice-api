@@ -197,10 +197,10 @@ WebAPIで利用できるダイスボットのシステムID一覧が返却され
     {"faces" : 10, "value" : 9}
   ],
   "detailed_rands" : [
-    {"kind" : "nomal", "faces" : 10, "value" : 8},
-    {"kind" : "nomal", "faces" : 10, "value" : 2},
-    {"kind" : "nomal", "faces" : 10, "value" : 1},
-    {"kind" : "nomal", "faces" : 10, "value" : 9}
+    {"kind" : "nomal", "sides" : 10, "value" : 8},
+    {"kind" : "nomal", "sides" : 10, "value" : 2},
+    {"kind" : "nomal", "sides" : 10, "value" : 1},
+    {"kind" : "nomal", "sides" : 10, "value" : 9}
   ]
 }
 ```
@@ -216,14 +216,14 @@ WebAPIで利用できるダイスボットのシステムID一覧が返却され
 
 - `nomal`
   - 通常のダイスロール
-  - `{"kind" : "nomal", "faces" : 10, "value" : 8}`
+  - `{"kind" : "nomal", "sides" : 10, "value" : 8}`
 - `tens_d10`
   - 十の位のダイス
-  - `{"kind" : "tens_d10", "faces" : 10, "value" : 80}`
-  - `{"kind" : "tens_d10", "faces" : 10, "value" : 0}`
+  - `{"kind" : "tens_d10", "sides" : 10, "value" : 80}`
+  - `{"kind" : "tens_d10", "sides" : 10, "value" : 0}`
     - `00` は0として扱われます
 - `d9`
   - 十面体を0〜9のダイスとして扱う
-  - `{"kind" : "d9", "faces" : 10, "value" : 0}`
+  - `{"kind" : "d9", "sides" : 10, "value" : 0}`
 
 Since: 0.9.0, BCDice Ver2.04.00
