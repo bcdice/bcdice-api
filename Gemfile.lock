@@ -25,7 +25,7 @@ GEM
       rack (>= 1.0, < 3)
     rainbow (3.0.0)
     rake (13.0.3)
-    rexml (3.2.4)
+    rexml (3.2.5)
     rubocop (0.81.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
