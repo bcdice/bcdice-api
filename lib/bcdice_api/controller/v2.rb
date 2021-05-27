@@ -40,7 +40,7 @@ module BCDiceAPI
       end
 
       get '/game_system' do
-        game_system = BCDice.all_game_systems.sort_by { |game| game::SORT_KEY } .map do |game|
+        game_system = BCDice.all_game_systems.sort_by { |game| game::SORT_KEY }.map do |game|
           { id: game::ID, name: game::NAME, sort_key: game::SORT_KEY }
         end
 

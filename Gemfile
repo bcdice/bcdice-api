@@ -13,7 +13,7 @@ gem 'puma', '~>4.3'
 group :development, :test do
   gem 'rack-test', '~>1.1'
   gem 'rake', '~>13.0'
-  gem 'rubocop', '~> 0.81.0', require: false
+  gem 'rubocop', '~> 1.15.0', require: false
   gem 'test-unit', '~>3.3'
   gem 'tomlrb'
 end
