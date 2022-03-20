@@ -8,7 +8,7 @@ gem 'sinatra', '~>2.0'
 gem 'sinatra-contrib', '~>2.0'
 gem 'sinatra-jsonp', '~>0.5.0'
 
-gem 'puma', '~>4.3'
+gem 'puma', '~>5.6'
 
 group :development, :test do
   gem 'rack-test', '~>1.1'
