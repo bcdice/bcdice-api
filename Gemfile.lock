@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    bcdice (3.6.0)
+    bcdice (3.7.0)
       i18n (~> 1.8.5)
     concurrent-ruby (1.1.10)
     i18n (1.8.11)
