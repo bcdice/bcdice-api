@@ -5,12 +5,6 @@ BCDiceを提供するWebAPIサーバー
 [![Action Status](https://github.com/bcdice/bcdice-api/workflows/Test/badge.svg?branch=master)](https://github.com/bcdice/bcdice-api/actions)
 [![Docker repository](https://img.shields.io/docker/pulls/bcdice/bcdice-api?logo=docker&logoColor=fff)](https://hub.docker.com/r/bcdice/bcdice-api)
 
-## Demo
-
-下記URLは開発検証用のURLです、予告なしに挙動が変更されたり、可動していない場合があるので使用しないでください。
-
-https://bcdice.herokuapp.com
-
 ## Public servers
 
 有志によって運営されている公開サーバーの一覧
@@ -76,7 +70,7 @@ Method                    | Description
 
 ## Documents
 
-- [無料で独自ダイスボット入りのBCDice-APIサーバーを立てる](docs/heroku.md) (中級者向け)
+- [Herokuで独自ダイスボット入りのBCDice-APIサーバーを立てる](docs/heroku.md) (中級者向け)
 
 ## Cases
 
