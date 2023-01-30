@@ -3,12 +3,7 @@
 BCDiceを提供するWebAPIサーバー
 
 [![Action Status](https://github.com/bcdice/bcdice-api/workflows/Test/badge.svg?branch=master)](https://github.com/bcdice/bcdice-api/actions)
-
-## Demo
-
-下記URLは開発検証用のURLです、予告なしに挙動が変更されたり、可動していない場合があるので使用しないでください。
-
-https://bcdice.herokuapp.com
+[![Docker repository](https://img.shields.io/docker/pulls/bcdice/bcdice-api?logo=docker&logoColor=fff)](https://hub.docker.com/r/bcdice/bcdice-api)
 
 ## Public servers
 
@@ -57,14 +52,16 @@ $ APP_ENV=production bundle exec rackup -E deployment
 
 ## API
 
-Method                           | Description
--------------------------------- | -----
-[/v1/version](/docs/api.md#version)   | BCDiceとAPIサーバーのバージョン
-[/v1/admin](/docs/api.md#admin)       | APIサーバ提供者の名前と連絡先
-[/v1/systems](/docs/api.md#systems)   | ダイスボットのシステムID一覧
-[/v1/names](/docs/api.md#names)       | ダイスボットのシステムIDとシステム名前の一覧
-[/v1/systeminfo](/docs/api.md#systeminfo)   | ダイスボットのシステム情報取得
-[/v1/diceroll](/docs/api.md#diceroll) | ダイスボットのコマンドを実行
+[`/v2`](https://github.com/bcdice/bcdice-api/blob/master/docs/api_v2.md)
+
+Method                    | Description
+------------------------- | -----
+/v2/version               | BCDiceとAPIサーバーのバージョン
+/v2/admin                 | APIサーバ提供者の名前と連絡先
+/v2/game_system           | ゲームシステムの一覧
+/v2/game_system/{id}      | ゲームシステムの情報
+/v2/game_system/{id}/roll | ダイスロール
+/v2/original_table        | オリジナル表の実行
 
 ## Plugin
 
@@ -73,7 +70,7 @@ Method                           | Description
 
 ## Documents
 
-- [無料で独自ダイスボット入りのBCDice-APIサーバーを立てる](docs/heroku.md) (中級者向け)
+- [Herokuで独自ダイスボット入りのBCDice-APIサーバーを立てる](docs/heroku.md) (中級者向け)
 
 ## Cases
 

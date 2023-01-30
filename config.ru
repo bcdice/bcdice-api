@@ -5,4 +5,4 @@ $LOAD_PATH.unshift File.join(__dir__, 'lib')
 
 require 'bcdice_api'
 
-run BCDiceAPI::App
+run BCDiceAPI::APP

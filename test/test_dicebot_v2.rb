@@ -7,7 +7,7 @@ require 'tomlrb'
 
 require 'bcdice_api'
 
-class DicebotTest < Test::Unit::TestCase
+class V2DicebotTest < Test::Unit::TestCase
   include Rack::Test::Methods
 
   def app
@@ -24,8 +24,6 @@ class DicebotTest < Test::Unit::TestCase
 
       data[:test].each.with_index(1) do |test_case, index|
         test_case[:filename] = filename
-        test_case[:game_system] = test_case[:game_system]
-        test_case[:output] = ": #{test_case[:output]}" unless test_case[:output].empty?
         test_case[:output] = nil if test_case[:output].empty? # TOMLではnilを表現できないので空文字で代用
         test_case[:secret] ||= false
         test_case[:success] ||= false
@@ -42,12 +40,18 @@ class DicebotTest < Test::Unit::TestCase
     data_set
   end
   def test_diceroll(data)
-    BCDiceAPI::Controller::V1.test_rands = data[:rands].map { |r| [r[:value], r[:sides]] }
+    BCDiceAPI::Controller::V2.test_rands = data[:rands].map { |r| [r[:value], r[:sides]] }
 
-    get '/v1/diceroll', system: data[:game_system], command: data[:input]
+    get "/v2/game_system/#{data[:game_system]}/roll", command: data[:input]
 
     json = JSON.parse(last_response.body)
-    assert_equal data[:output], json['result']
-    assert_equal data[:secret], json['secret'] if data[:output]
+    assert_equal data[:output], json['text']
+    return unless data[:output]
+
+    assert_equal data[:secret], json['secret']
+    assert_equal data[:success], json['success']
+    assert_equal data[:failure], json['failure']
+    assert_equal data[:critical], json['critical']
+    assert_equal data[:fumble], json['fumble']
   end
 end

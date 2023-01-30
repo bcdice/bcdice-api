@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module BCDiceAPI
-  VERSION = '1.0.0'
+  VERSION = '2.1.1'
 end
