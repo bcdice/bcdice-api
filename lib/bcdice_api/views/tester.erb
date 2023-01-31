@@ -16,6 +16,10 @@
       }
       .pre {
         white-space: pre-wrap;
+
+        padding: 1rem;
+        background-color: #f5f5f5;
+        border-radius: 4px;
       }
     </style>
   </head>
@@ -38,6 +42,7 @@
         <form>
           <div class="form-group">
             <div class="input-group mb-3">
+              <input type="text" id="game" name="game" hidden  value="<%= @id %>">
               <input type="text" id="command" name="command" class="form-control form-control-lg" placeholder="1D6" value="<%= @command %>">
               <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="send">Send (Enter)</button>
@@ -48,11 +53,11 @@
         <% if @result %>
         <h3>出力 <small><%= @command %></small></h3>
         <pre class="pre">
-<%= @result[:result] %>
+<%= @result[:text] %>
         </pre>
         <h4>ダイス</h4>
         <pre class="pre">
-<%= @result[:dices] %>
+<%= @result[:rands] %>
         </pre>
         <% end %>
       </div>
