@@ -6,7 +6,6 @@ gem 'bcdice', '~>3.0'
 
 gem 'sinatra', '~>2.0'
 gem 'sinatra-contrib', '~>2.0'
-gem 'sinatra-jsonp', '~>0.5.0'
 
 gem 'puma', '~>5.6'
 
