@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine
+FROM ruby:3.3-alpine
 
 COPY . bcdice-api/
 WORKDIR bcdice-api
