@@ -35,7 +35,8 @@ GEM
     rainbow (3.1.1)
     rake (13.1.0)
     regexp_parser (2.9.0)
-    rexml (3.2.6)
+    rexml (3.2.8)
+      strscan (>= 3.0.9)
     rubocop (1.15.0)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -61,6 +62,7 @@ GEM
       rack-protection (= 4.0.0)
       sinatra (= 4.0.0)
       tilt (~> 2.0)
+    strscan (3.1.0)
     test-unit (3.6.1)
       power_assert
     tilt (2.3.0)
